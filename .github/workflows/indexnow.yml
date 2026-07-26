@@ -1,0 +1,28 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build URL list from sitemap.xml
+        id: urls
+        run: |
+          urls=$(grep -oE '<loc>[^<]+</loc>' sitemap.xml | sed -E 's/<\/?loc>//g' | paste -sd, -)
+          echo "urls=$urls" >> "$GITHUB_OUTPUT"
+
+      - name: Submit to IndexNow
+        run: |
+          IFS=',' read -ra URL_ARRAY <<< "${{ steps.urls.outputs.urls }}"
+          json_urls=$(printf '"%s",' "${URL_ARRAY[@]}")
+          json_urls="[${json_urls%,}]"
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d "{\"host\":\"papajohnscoupons.us\",\"key\":\"b5d501b7d211d0c1371e7080a76a2cae\",\"keyLocation\":\"https://papajohnscoupons.us/b5d501b7d211d0c1371e7080a76a2cae.txt\",\"urlList\":${json_urls}}" \
+            -w "\nIndexNow response: %{http_code}\n"
