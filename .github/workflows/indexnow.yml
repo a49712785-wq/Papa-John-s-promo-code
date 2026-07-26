@@ -10,19 +10,53 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Build URL list from sitemap.xml
+      - name: Find changed pages
         id: urls
         run: |
-          urls=$(grep -oE '<loc>[^<]+</loc>' sitemap.xml | sed -E 's/<\/?loc>//g' | paste -sd, -)
-          echo "urls=$urls" >> "$GITHUB_OUTPUT"
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+          EMPTY_TREE="4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE="$EMPTY_TREE"
+          fi
 
-      - name: Submit to IndexNow
+          changed_files=$(git diff --name-only "$BEFORE" "$AFTER" -- '*.html')
+          echo "Changed HTML files:"
+          echo "$changed_files"
+
+          urls=()
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            case "$f" in
+              404.html) continue ;;
+              index.html) urls+=("https://papajohnscoupons.us/") ;;
+              */index.html)
+                dir="${f%/index.html}"
+                urls+=("https://papajohnscoupons.us/$dir/")
+                ;;
+            esac
+          done <<< "$changed_files"
+
+          if [ ${#urls[@]} -eq 0 ]; then
+            echo "has_urls=false" >> "$GITHUB_OUTPUT"
+          else
+            json_urls=$(printf '"%s",' "${urls[@]}")
+            json_urls="[${json_urls%,}]"
+            echo "has_urls=true" >> "$GITHUB_OUTPUT"
+            echo "json_urls=$json_urls" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Submit changed pages to IndexNow
+        if: steps.urls.outputs.has_urls == 'true'
         run: |
-          IFS=',' read -ra URL_ARRAY <<< "${{ steps.urls.outputs.urls }}"
-          json_urls=$(printf '"%s",' "${URL_ARRAY[@]}")
-          json_urls="[${json_urls%,}]"
           curl -s -X POST "https://api.indexnow.org/indexnow" \
             -H "Content-Type: application/json" \
-            -d "{\"host\":\"papajohnscoupons.us\",\"key\":\"b5d501b7d211d0c1371e7080a76a2cae\",\"keyLocation\":\"https://papajohnscoupons.us/b5d501b7d211d0c1371e7080a76a2cae.txt\",\"urlList\":${json_urls}}" \
+            -d "{\"host\":\"papajohnscoupons.us\",\"key\":\"b5d501b7d211d0c1371e7080a76a2cae\",\"keyLocation\":\"https://papajohnscoupons.us/b5d501b7d211d0c1371e7080a76a2cae.txt\",\"urlList\":${{ steps.urls.outputs.json_urls }}}" \
             -w "\nIndexNow response: %{http_code}\n"
+
+      - name: Skip (no page content changed)
+        if: steps.urls.outputs.has_urls != 'true'
+        run: echo "No .html pages changed in this push (only CSS/JS/config etc.) — skipping IndexNow submission."
