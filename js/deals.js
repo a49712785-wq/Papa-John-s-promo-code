@@ -5,7 +5,7 @@
   var grid = document.getElementById('pjGrid');
   if(!grid) return;
 
-  var LAST_CHECKED = 'July 13, 2026';
+  var LAST_CHECKED = 'July 26, 2026';
 
   var DEALS = [
     { type:'code', code:'SM25', filter:'percent-off', verify:'official', discount:'25% off', tag:'Public code',
