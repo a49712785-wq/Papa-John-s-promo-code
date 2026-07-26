@@ -49,7 +49,23 @@
 </head>
 <body>
 
-<header id="site-header-inject"></header>
+<header id="site-header-inject">
+<nav class="topnav">
+  <div class="wrap">
+    <a href="/" class="logo">Papa John's <span>Coupons</span></a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="/#deals">Offers</a>
+      <a href="/papa-rewards/">Papa Rewards</a>
+      <a href="/student-discount/">Student Discount</a>
+      <a href="/military-discount/">Military Discount</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+</header>
 
 <main>
 
@@ -295,14 +311,30 @@
 
 </main>
 
-<footer id="site-footer"></footer>
+<footer id="site-footer" class="site-footer">
+  <div class="wrap">
+    <p><strong>papajohnscoupons.us</strong> is an independent site and is not affiliated with, endorsed by, or operated by Papa John's International, Inc. or any of its franchisees.</p>
+    <p style="margin-top:8px;">All trademarks, logos, and brand names referenced on this site belong to their respective owners. Codes and offers are provided for reference only and are not guaranteed to be current or valid at checkout &mdash; always confirm the discount in your cart before paying.</p>
+    <p style="margin-top:16px; display:flex; gap:16px; flex-wrap:wrap;">
+      <a href="/bogo-deal/">BOGO Deal</a>
+      <a href="/tuesday-special/">Tuesday Special</a>
+      <a href="/papa-rewards/">Papa Rewards</a>
+      <a href="/student-discount/">Student Discount</a>
+      <a href="/military-discount/">Military Discount</a>
+    </p>
+    <p style="margin-top:16px; display:flex; gap:16px; flex-wrap:wrap;">
+      <a href="/about-us/">About Us</a>
+      <a href="/contact-us/">Contact Us</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <a href="/terms-conditions/">Terms &amp; Conditions</a>
+    </p>
+  </div>
+</footer>
 
 <div class="pj-overlay" id="pjOverlay">
   <div class="pj-modal" id="pjModal"></div>
 </div>
 
-<script src="/js/include-header.js?v=1"></script>
-<script src="/js/include-footer.js?v=1"></script>
 <script src="/js/script.js?v=1"></script>
 <script src="/js/deals.js?v=1"></script>
 </body>
