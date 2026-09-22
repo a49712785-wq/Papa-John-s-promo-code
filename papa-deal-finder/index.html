@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Papa John's Promo Codes, Offers & Deals — Store-Level Data</title>
+<title>Papa John's Promo Codes, Offers & Deals — Store-Level Data | September 2026</title>
 <style>.pj-deal-finder{
     --ink:#2B211A;
     --ink-soft:#7A6B5D;
@@ -176,7 +176,7 @@
 <div id="tabFinder">
 <div class="wrap">
   <section class="hero">
-    <h1 class="display">Papa John's promo codes and deals, by store.</h1>
+    <h2 class="display">Papa John's promo codes and deals, by store.</h2>
     <p class="lead">No generic national list. Offers are collected from individual Papa John's store deal pages. Enter your city, state, or ZIP to see the offers in our September 22, 2026 snapshot for the closest sampled location.</p>
 
     <div class="stat-row" id="statRow"></div>
@@ -209,7 +209,7 @@
 <div id="tabBest" style="display:none">
 <div class="wrap">
   <section class="hero" style="padding-bottom:0">
-    <h1 class="display">See where the savings are biggest.</h1>
+    <h2 class="display">See where the savings are biggest.</h2>
     <p class="lead">A leaderboard built from the tracked deal dataset — the largest displayed savings and how the same order compares across sampled locations.</p>
   </section>
 </div>
@@ -219,7 +219,7 @@
 <div id="tabPlan" style="display:none">
 <div class="wrap">
   <section class="hero" style="padding-bottom:0">
-    <h1 class="display">Tell us the order. We'll find the best fit.</h1>
+    <h2 class="display">Tell us the order. We'll find the best fit.</h2>
     <p class="lead">Three quick questions, then a ranked pick from <span id="planStoreLabel">your selected store</span>'s deals in this dataset, with the reasoning shown, not just a list.</p>
 
     <div class="search-card" style="margin-bottom:22px">
@@ -797,8 +797,15 @@ function computePlan(){
   });
 
   const withinBudget = candidates.filter(c => c.deal.cp <= budget);
-  const pool = withinBudget.length ? withinBudget : candidates;
-  const ranked = [...pool].sort((a,b) => a.costPerPerson - b.costPerPerson).slice(0,3);
+  const affordableAndEnough = withinBudget.filter(c => c.serves >= people);
+  const enough = candidates.filter(c => c.serves >= people);
+  const pool = affordableAndEnough.length ? affordableAndEnough : (withinBudget.length ? withinBudget : (enough.length ? enough : candidates));
+  const ranked = [...pool].sort((a,b) => {
+    const aEnough = a.serves >= people;
+    const bEnough = b.serves >= people;
+    if(aEnough !== bEnough) return aEnough ? -1 : 1;
+    return a.costPerPerson - b.costPerPerson;
+  }).slice(0,3);
 
   if(!ranked.length){
     resultsWrap.innerHTML = `<div class="empty-state"><h3 class="display">No pizza deals matched</h3><p>Try raising the budget, or check "Find My Deals" — this store's current offers may be mostly sides or drinks right now.</p></div>`;
