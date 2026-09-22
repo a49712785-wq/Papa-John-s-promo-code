@@ -3,13 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Papa John's Promo Codes, Offers & Deals — Verified by Store</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
+<title>Papa John's Promo Codes, Offers & Deals — Store-Level Data</title>
+<style>.pj-deal-finder{
     --ink:#2B211A;
     --ink-soft:#7A6B5D;
     --paper:#FBF3E6;
@@ -22,12 +17,10 @@
     --rose:#B84C34;
     --rose-soft:#F5E1D8;
     --radius:14px;
-  }
-  :root:not([data-theme="light"]){
+  }.pj-deal-finder:not([data-theme="light"]){
     /* default is light unless system says dark AND no explicit light chosen */
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){.pj-deal-finder:not([data-theme="light"]){
       --ink:#F1E6D8;
       --ink-soft:#C4B49F;
       --paper:#1C1611;
@@ -40,8 +33,7 @@
       --rose:#E0855F;
       --rose-soft:#3A2419;
     }
-  }
-  :root[data-theme="dark"]{
+  }.pj-deal-finder[data-theme="dark"]{
     --ink:#F1E6D8;
     --ink-soft:#C4B49F;
     --paper:#1C1611;
@@ -53,10 +45,7 @@
     --green-soft:#25301F;
     --rose:#E0855F;
     --rose-soft:#3A2419;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-padding-top:env(safe-area-inset-top,0px);}
-  body{
+  }.pj-deal-finder *{box-sizing:border-box;}.pj-deal-finder{scroll-padding-top:env(safe-area-inset-top,0px);}.pj-deal-finder{
     margin:0;
     background:var(--paper);
     color:var(--ink);
@@ -64,240 +53,117 @@
     padding-top:env(safe-area-inset-top,0px);
     padding-bottom:env(safe-area-inset-bottom,0px);
     -webkit-font-smoothing:antialiased;
-  }
-  .display{font-family:'Fraunces', Georgia, serif; font-optical-sizing:auto;}
-  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}
-  a{color:inherit;}
-  ::selection{background:var(--gold-soft);}
-
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
-
-  /* ---------- Top bar ---------- */
+  }.pj-deal-finder .display{font-family:'Fraunces', Georgia, serif; font-optical-sizing:auto;}.pj-deal-finder .mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}.pj-deal-finder a{color:inherit;}.pj-deal-finder ::selection{background:var(--gold-soft);}.pj-deal-finder .wrap{max-width:960px;margin:0 auto;padding:0 20px;}.pj-deal-finder /* ---------- Top bar ---------- */
   header.top{
     position:sticky; top:0; z-index:30;
     background:color-mix(in srgb, var(--paper) 88%, transparent);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
     padding-top:env(safe-area-inset-top,0px);
-  }
-  .topbar-inner{display:flex; align-items:center; justify-content:space-between; height:56px;}
-  .brand{display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:.2px; font-size:15px;}
-  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
-  .theme-toggle{
+  }.pj-deal-finder .topbar-inner{display:flex; align-items:center; justify-content:space-between; height:56px;}.pj-deal-finder .brand{display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:.2px; font-size:15px;}.pj-deal-finder .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}.pj-deal-finder .theme-toggle{
     border:1px solid var(--line); background:var(--paper-raised); color:var(--ink-soft);
     border-radius:999px; width:34px;height:34px; display:flex;align-items:center;justify-content:center;
     cursor:pointer; font-size:15px;
-  }
-  .tab-nav{display:flex; gap:22px; height:42px; align-items:center;}
-  .tab-btn{
+  }.pj-deal-finder .tab-nav{display:flex; gap:22px; height:42px; align-items:center;}.pj-deal-finder .tab-btn{
     background:none; border:none; font-family:inherit; font-size:14px; color:var(--ink-soft);
     cursor:pointer; padding:0 0 12px; height:42px; border-bottom:2px solid transparent; font-weight:500;
-  }
-  .tab-btn.active{color:var(--ink); border-bottom-color:var(--rose); font-weight:600;}
-
-  /* ---------- Hero ---------- */
-  .hero{padding:52px 0 28px;}
-  .hero h1{
+  }.pj-deal-finder .tab-btn.active{color:var(--ink); border-bottom-color:var(--rose); font-weight:600;}.pj-deal-finder /* ---------- Hero ---------- */
+  .hero{padding:52px 0 28px;}.pj-deal-finder .hero h1{
     font-size:clamp(30px,5vw,46px); line-height:1.06; margin:0 0 14px; font-weight:600;
     max-width:15ch;
-  }
-  .hero p.lead{color:var(--ink-soft); font-size:17px; line-height:1.55; max-width:52ch; margin:0 0 28px;}
-
-  p.disclaimer{
+  }.pj-deal-finder .hero p.lead{color:var(--ink-soft); font-size:17px; line-height:1.55; max-width:52ch; margin:0 0 28px;}.pj-deal-finder p.disclaimer{
     font-size:12.5px; color:var(--ink-soft); max-width:56ch; line-height:1.5; margin:0 0 26px;
     padding-left:12px; border-left:2px solid var(--line);
-  }
-
-  .stat-row{display:flex; gap:26px; flex-wrap:wrap; margin:0 0 30px;}
-  .stat{min-width:120px;}
-  .stat .num{font-family:'Fraunces',serif; font-size:26px; font-weight:600; display:block;}
-  .stat .lab{font-size:12.5px; color:var(--ink-soft);}
-  .stat .lab.trust{color:var(--green);}
-
-  /* ---------- Search ---------- */
+  }.pj-deal-finder .stat-row{display:flex; gap:26px; flex-wrap:wrap; margin:0 0 30px;}.pj-deal-finder .stat{min-width:120px;}.pj-deal-finder .stat .num{font-family:'Fraunces',serif; font-size:26px; font-weight:600; display:block;}.pj-deal-finder .stat .lab{font-size:12.5px; color:var(--ink-soft);}.pj-deal-finder .stat .lab.trust{color:var(--green);}.pj-deal-finder /* ---------- Search ---------- */
   .search-card{
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:18px; box-shadow:0 1px 2px rgba(0,0,0,.03);
-  }
-  .search-row{display:flex; gap:10px; flex-wrap:wrap;}
-  .search-input-wrap{flex:1 1 260px; position:relative;}
-  .search-input{
+  }.pj-deal-finder .search-row{display:flex; gap:10px; flex-wrap:wrap;}.pj-deal-finder .search-input-wrap{flex:1 1 260px; position:relative;}.pj-deal-finder .search-input{
     width:100%; padding:13px 16px; border-radius:10px; border:1px solid var(--line);
     background:var(--paper); color:var(--ink); font-size:16px; font-family:inherit;
-  }
-  .search-input:focus{outline:2px solid var(--gold); outline-offset:1px;}
-  .search-btn{
+  }.pj-deal-finder .search-input:focus{outline:2px solid var(--gold); outline-offset:1px;}.pj-deal-finder .search-btn{
     background:var(--ink); color:var(--paper); border:none; border-radius:10px;
     padding:0 22px; font-size:15px; font-weight:600; cursor:pointer; font-family:inherit;
-  }
-  .search-btn:hover{opacity:.88;}
-  .locate-btn{
+  }.pj-deal-finder .search-btn:hover{opacity:.88;}.pj-deal-finder .locate-btn{
     background:transparent; color:var(--ink-soft); border:1px solid var(--line); border-radius:10px;
     padding:0 16px; font-size:14px; cursor:pointer; font-family:inherit; white-space:nowrap;
-  }
-  .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:13px;}
-  .chip{
+  }.pj-deal-finder .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:13px;}.pj-deal-finder .chip{
     font-size:13px; padding:6px 12px; border-radius:999px; border:1px solid var(--line);
     background:var(--paper); color:var(--ink-soft); cursor:pointer; font-family:inherit;
-  }
-  .chip:hover{border-color:var(--gold); color:var(--ink);}
-
-  /* ---------- Results ---------- */
-  #results{padding:34px 0 90px;}
-  .store-banner{
+  }.pj-deal-finder .chip:hover{border-color:var(--gold); color:var(--ink);}.pj-deal-finder /* ---------- Results ---------- */
+  #results{padding:34px 0 90px;}.pj-deal-finder .store-banner{
     display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:18px 20px; margin-bottom:6px; flex-wrap:wrap;
-  }
-  .store-banner .addr{font-size:14.5px; color:var(--ink-soft); margin-top:3px;}
-  .store-banner .city{font-family:'Fraunces',serif; font-size:20px; font-weight:600;}
-  .verify-badge{
+  }.pj-deal-finder .store-banner .addr{font-size:14.5px; color:var(--ink-soft); margin-top:3px;}.pj-deal-finder .store-banner .city{font-family:'Fraunces',serif; font-size:20px; font-weight:600;}.pj-deal-finder .verify-badge{
     display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--green);
     background:var(--green-soft); padding:5px 11px; border-radius:999px; white-space:nowrap;
-  }
-  .fallback-note{
+  }.pj-deal-finder .fallback-note{
     font-size:13.5px; color:var(--gold); background:var(--gold-soft); border-radius:10px;
     padding:10px 14px; margin:10px 0 20px; line-height:1.5;
-  }
-
-  .filter-bar{
+  }.pj-deal-finder .filter-bar{
     display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:20px 0 18px;
     position:sticky; top:56px; background:var(--paper); padding:10px 0; z-index:20;
-  }
-  .type-chip{
+  }.pj-deal-finder .type-chip{
     font-size:13px; padding:7px 13px; border-radius:999px; border:1px solid var(--line);
     background:var(--paper-raised); color:var(--ink-soft); cursor:pointer; font-family:inherit;
     white-space:nowrap;
-  }
-  .type-chip.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}
-  .sort-select{
+  }.pj-deal-finder .type-chip.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}.pj-deal-finder .sort-select{
     margin-left:auto; font-size:13px; padding:7px 10px; border-radius:10px; border:1px solid var(--line);
     background:var(--paper-raised); color:var(--ink); font-family:inherit;
-  }
-
-  .deal-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px;}
-  .deal-card{
+  }.pj-deal-finder .deal-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px;}.pj-deal-finder .deal-card{
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:16px; display:flex; flex-direction:column; gap:10px;
-  }
-  .deal-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
-  .badge-tag{
+  }.pj-deal-finder .deal-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}.pj-deal-finder .badge-tag{
     font-size:11px; letter-spacing:.03em; color:var(--rose); background:var(--rose-soft);
     padding:3px 9px; border-radius:999px; white-space:nowrap;
-  }
-  .type-tag{font-size:11px; color:var(--ink-soft);}
-  .deal-title{font-size:15.5px; font-weight:600; line-height:1.35; margin:0;}
-  .price-row{display:flex; align-items:baseline; gap:9px; margin-top:auto;}
-  .price-current{font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600; color:var(--ink);}
-  .price-original{font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--ink-soft); text-decoration:line-through;}
-  .savings-tag{
+  }.pj-deal-finder .type-tag{font-size:11px; color:var(--ink-soft);}.pj-deal-finder .deal-title{font-size:15.5px; font-weight:600; line-height:1.35; margin:0;}.pj-deal-finder .price-row{display:flex; align-items:baseline; gap:9px; margin-top:auto;}.pj-deal-finder .price-current{font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600; color:var(--ink);}.pj-deal-finder .price-original{font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--ink-soft); text-decoration:line-through;}.pj-deal-finder .savings-tag{
     font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--green); background:var(--green-soft);
     padding:2px 8px; border-radius:6px; margin-left:auto;
-  }
-  .no-price-note{font-size:12.5px; color:var(--ink-soft); font-style:italic;}
-
-  .empty-state{text-align:center; padding:60px 20px; color:var(--ink-soft);}
-  .empty-state h3{color:var(--ink); font-family:'Fraunces',serif; font-size:22px; margin-bottom:8px;}
-
-  /* ---------- Browse states ---------- */
-  .browse-section{padding:10px 0 70px;}
-  .browse-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:16px;}
-  .browse-head h2{font-family:'Fraunces',serif; font-size:22px; margin:0;}
-  .state-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px;}
-  .state-tile{
+  }.pj-deal-finder .no-price-note{font-size:12.5px; color:var(--ink-soft); font-style:italic;}.pj-deal-finder .empty-state{text-align:center; padding:60px 20px; color:var(--ink-soft);}.pj-deal-finder .empty-state h3{color:var(--ink); font-family:'Fraunces',serif; font-size:22px; margin-bottom:8px;}.pj-deal-finder /* ---------- Browse states ---------- */
+  .browse-section{padding:10px 0 70px;}.pj-deal-finder .browse-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:16px;}.pj-deal-finder .browse-head h2{font-family:'Fraunces',serif; font-size:22px; margin:0;}.pj-deal-finder .state-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px;}.pj-deal-finder .state-tile{
     border:1px solid var(--line); background:var(--paper-raised); border-radius:10px;
     padding:10px 12px; cursor:pointer; font-family:inherit; text-align:left;
-  }
-  .state-tile:hover{border-color:var(--gold);}
-  .state-tile .sname{font-size:13.5px; font-weight:600;}
-  .state-tile .scount{font-size:11.5px; color:var(--ink-soft);}
-  .multi-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-left:5px;}
-
-  footer{border-top:1px solid var(--line); padding:26px 0 40px;}
-  footer p{font-size:12.5px; color:var(--ink-soft); line-height:1.6; max-width:60ch;}
-
-  datalist{}
-
-  /* ---------- Tab 2: Best Deals & Savings ---------- */
+  }.pj-deal-finder .state-tile:hover{border-color:var(--gold);}.pj-deal-finder .state-tile .sname{font-size:13.5px; font-weight:600;}.pj-deal-finder .state-tile .scount{font-size:11.5px; color:var(--ink-soft);}.pj-deal-finder .multi-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-left:5px;}.pj-deal-finder footer{border-top:1px solid var(--line); padding:26px 0 40px;}.pj-deal-finder footer p{font-size:12.5px; color:var(--ink-soft); line-height:1.6; max-width:60ch;}.pj-deal-finder datalist{}.pj-deal-finder /* ---------- Tab 2: Best Deals & Savings ---------- */
   .calc-card{
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:22px; margin:22px 0 40px; display:flex; gap:24px; flex-wrap:wrap; align-items:center;
-  }
-  .calc-left{flex:1 1 260px;}
-  .calc-left h3{font-family:'Fraunces',serif; font-size:19px; margin:0 0 6px;}
-  .calc-left p{font-size:13.5px; color:var(--ink-soft); margin:0 0 14px; max-width:44ch;}
-  .calc-input-row{display:flex; align-items:center; gap:10px;}
-  .calc-input-row input{
+  }.pj-deal-finder .calc-left{flex:1 1 260px;}.pj-deal-finder .calc-left h3{font-family:'Fraunces',serif; font-size:19px; margin:0 0 6px;}.pj-deal-finder .calc-left p{font-size:13.5px; color:var(--ink-soft); margin:0 0 14px; max-width:44ch;}.pj-deal-finder .calc-input-row{display:flex; align-items:center; gap:10px;}.pj-deal-finder .calc-input-row input{
     width:70px; padding:9px 10px; border-radius:8px; border:1px solid var(--line);
     background:var(--paper); color:var(--ink); font-family:inherit; font-size:15px; text-align:center;
-  }
-  .calc-result{
+  }.pj-deal-finder .calc-result{
     flex:1 1 220px; text-align:center; background:var(--gold-soft); border-radius:12px; padding:18px;
-  }
-  .calc-result .amt{font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--rose); display:block;}
-  .calc-result .cap{font-size:12.5px; color:var(--ink-soft); margin-top:4px;}
-
-  .board-toggle{display:flex; gap:8px; margin-bottom:16px;}
-
-  .board-table{width:100%; border-collapse:collapse; font-size:14px;}
-  .board-table th{
+  }.pj-deal-finder .calc-result .amt{font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--rose); display:block;}.pj-deal-finder .calc-result .cap{font-size:12.5px; color:var(--ink-soft); margin-top:4px;}.pj-deal-finder .board-toggle{display:flex; gap:8px; margin-bottom:16px;}.pj-deal-finder .board-table{width:100%; border-collapse:collapse; font-size:14px;}.pj-deal-finder .board-table th{
     text-align:left; font-size:11.5px; text-transform:none; color:var(--ink-soft);
     padding:8px 10px; border-bottom:1px solid var(--line); font-weight:600;
-  }
-  .board-table td{padding:11px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
-  .board-table tr:last-child td{border-bottom:none;}
-  .rank-num{font-family:'IBM Plex Mono',monospace; color:var(--ink-soft); font-size:13px;}
-  .board-loc{font-weight:600;}
-  .board-title{color:var(--ink-soft); font-size:13px;}
-  .board-save{font-family:'IBM Plex Mono',monospace; color:var(--green); font-weight:600;}
-  .board-price{font-family:'IBM Plex Mono',monospace;}
-  .table-wrap{overflow-x:auto; background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius); padding:6px 4px;}
-  .board-note{font-size:12.5px; color:var(--ink-soft); margin:12px 0 40px;}
-
-  /* ---------- Tab 3: Plan My Order ---------- */
+  }.pj-deal-finder .board-table td{padding:11px 10px; border-bottom:1px solid var(--line); vertical-align:top;}.pj-deal-finder .board-table tr:last-child td{border-bottom:none;}.pj-deal-finder .rank-num{font-family:'IBM Plex Mono',monospace; color:var(--ink-soft); font-size:13px;}.pj-deal-finder .board-loc{font-weight:600;}.pj-deal-finder .board-title{color:var(--ink-soft); font-size:13px;}.pj-deal-finder .board-save{font-family:'IBM Plex Mono',monospace; color:var(--green); font-weight:600;}.pj-deal-finder .board-price{font-family:'IBM Plex Mono',monospace;}.pj-deal-finder .table-wrap{overflow-x:auto; background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius); padding:6px 4px;}.pj-deal-finder .board-note{font-size:12.5px; color:var(--ink-soft); margin:12px 0 40px;}.pj-deal-finder /* ---------- Tab 3: Plan My Order ---------- */
   .plan-form{
     display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:20px; margin:22px 0 8px;
-  }
-  .plan-field label{display:block; font-size:12.5px; color:var(--ink-soft); margin-bottom:7px;}
-  .plan-field input[type="number"]{
+  }.pj-deal-finder .plan-field label{display:block; font-size:12.5px; color:var(--ink-soft); margin-bottom:7px;}.pj-deal-finder .plan-field input[type="number"]{
     width:100%; padding:10px 12px; border-radius:9px; border:1px solid var(--line);
     background:var(--paper); color:var(--ink); font-family:inherit; font-size:15px;
-  }
-  .appetite-group{display:flex; gap:6px;}
-  .appetite-opt{
+  }.pj-deal-finder .appetite-group{display:flex; gap:6px;}.pj-deal-finder .appetite-opt{
     flex:1; padding:9px 4px; text-align:center; font-size:12.5px; border-radius:8px; cursor:pointer;
     border:1px solid var(--line); background:var(--paper); color:var(--ink-soft);
-  }
-  .appetite-opt.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}
-  .plan-note{font-size:12.5px; color:var(--ink-soft); margin:0 0 30px;}
-
-  .pick-card{
+  }.pj-deal-finder .appetite-opt.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}.pj-deal-finder .plan-note{font-size:12.5px; color:var(--ink-soft); margin:0 0 30px;}.pj-deal-finder .pick-card{
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:18px 20px; margin-bottom:12px; display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;
-  }
-  .pick-rank{
+  }.pj-deal-finder .pick-rank{
     font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--gold); min-width:34px;
-  }
-  .pick-body{flex:1 1 260px;}
-  .pick-title{font-weight:600; font-size:15.5px; margin:0 0 4px;}
-  .pick-reason{font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0 0 8px;}
-  .pick-meta{display:flex; gap:10px; flex-wrap:wrap; font-size:12px; color:var(--ink-soft);}
-  .pick-meta span{background:var(--paper); border:1px solid var(--line); padding:3px 9px; border-radius:999px;}
-  .pick-price{text-align:right; min-width:90px;}
-  .pick-price .cur{font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:600;}
-  .pick-price .pp{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
-  @media (max-width:560px){
-    .filter-bar{position:static;}
+  }.pj-deal-finder .pick-.pj-deal-finder{flex:1 1 260px;}.pj-deal-finder .pick-title{font-weight:600; font-size:15.5px; margin:0 0 4px;}.pj-deal-finder .pick-reason{font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0 0 8px;}.pj-deal-finder .pick-meta{display:flex; gap:10px; flex-wrap:wrap; font-size:12px; color:var(--ink-soft);}.pj-deal-finder .pick-meta span{background:var(--paper); border:1px solid var(--line); padding:3px 9px; border-radius:999px;}.pj-deal-finder .pick-price{text-align:right; min-width:90px;}.pj-deal-finder .pick-price .cur{font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:600;}.pj-deal-finder .pick-price .pp{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
+  @media (max-width:560px){.pj-deal-finder .filter-bar{position:static;}
   }
 </style>
 </head>
 <body>
+<div id="pj-deal-finder">
+
 
 <header class="top">
   <div class="wrap topbar-inner">
-    <div class="brand"><span class="dot"></span>Verified Deals Finder</div>
+    <div class="brand"><span class="dot"></span>Store-Level Deals Finder</div>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">◐</button>
   </div>
   <div class="wrap tab-nav">
@@ -310,8 +176,8 @@
 <div id="tabFinder">
 <div class="wrap">
   <section class="hero">
-    <h1 class="display">Papa John's promo codes and deals, verified by store.</h1>
-    <p class="lead">No generic national codes. Every offer here comes straight from a real store's deals page, so what you find is what you'll actually save. Enter your city, state, or ZIP to see your location's live promo codes and deals.</p>
+    <h1 class="display">Papa John's promo codes and deals, by store.</h1>
+    <p class="lead">No generic national list. Offers are collected from individual Papa John's store deal pages. Enter your city, state, or ZIP to see the offers in our September 22, 2026 snapshot for the closest sampled location.</p>
 
     <div class="stat-row" id="statRow"></div>
 
@@ -344,7 +210,7 @@
 <div class="wrap">
   <section class="hero" style="padding-bottom:0">
     <h1 class="display">See where the savings are biggest.</h1>
-    <p class="lead">A running leaderboard built from every verified deal in the dataset — the single biggest discounts right now, and how the same order compares state to state.</p>
+    <p class="lead">A leaderboard built from the tracked deal dataset — the largest displayed savings and how the same order compares across sampled locations.</p>
   </section>
 </div>
 <div class="wrap" id="bestContent"></div>
@@ -354,7 +220,7 @@
 <div class="wrap">
   <section class="hero" style="padding-bottom:0">
     <h1 class="display">Tell us the order. We'll find the best fit.</h1>
-    <p class="lead">Three quick questions, then a ranked pick from <span id="planStoreLabel">your selected store</span>'s current deals, with the reasoning shown, not just a list.</p>
+    <p class="lead">Three quick questions, then a ranked pick from <span id="planStoreLabel">your selected store</span>'s deals in this dataset, with the reasoning shown, not just a list.</p>
 
     <div class="search-card" style="margin-bottom:22px">
       <div class="search-row">
@@ -374,7 +240,7 @@
 <footer>
   <div class="wrap">
     <p><strong>Independent tool, not an official Papa John's site.</strong> Not affiliated with, endorsed by, or operated by Papa John's International, Inc. "Papa John's" refers to the pizza chain whose public store pages this data was collected from.</p>
-    <p><strong>How this works:</strong> deals are collected directly from individual Papa John's store pages (not national marketing codes), so pricing reflects what a specific location actually shows a customer. When your exact city isn't covered yet, this prototype shows the nearest verified store and always labels it clearly. This is a working prototype built on the current dataset, not the live production site.</p>
+    <p><strong>How this works:</strong> deals are collected directly from individual Papa John's store pages (not national marketing codes), so pricing reflects what a specific location actually shows a customer. When your exact city isn't covered yet, this prototype shows the nearest sampled store and always labels it clearly. This is a working prototype built on the September 22, 2026 dataset, not a live production feed.</p>
   </div>
 </footer>
 
@@ -408,17 +274,18 @@ function haversine(lat1, lon1, lat2, lon2){
 }
 
 // ---------- Theme ----------
+const toolRoot = document.getElementById('pj-deal-finder');
 const themeBtn = document.getElementById('themeToggle');
 function applyTheme(t){
-  if(t) document.documentElement.setAttribute('data-theme', t);
-  else document.documentElement.removeAttribute('data-theme');
+  if(t) toolRoot.setAttribute('data-theme', t);
+  else toolRoot.removeAttribute('data-theme');
 }
 try {
   const saved = localStorage.getItem('vdf-theme');
   if(saved) applyTheme(saved);
 } catch(e){}
 themeBtn.addEventListener('click', () => {
-  const cur = document.documentElement.getAttribute('data-theme');
+  const cur = toolRoot.getAttribute('data-theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let next;
   if(!cur) next = prefersDark ? 'light' : 'dark';
@@ -431,7 +298,7 @@ themeBtn.addEventListener('click', () => {
 // ---------- Stats ----------
 const totalStates = new Set(STORES.map(s=>s.s)).size;
 document.getElementById('statRow').innerHTML = `
-  <div class="stat"><span class="num">${STORES.length}</span><span class="lab trust">✓ manually verified stores</span></div>
+  <div class="stat"><span class="num">${STORES.length}</span><span class="lab trust">✓ sampled stores</span></div>
   <div class="stat"><span class="num">${totalStates}</span><span class="lab">states + DC covered</span></div>
   <div class="stat"><span class="num">${DEALS.length.toLocaleString()}</span><span class="lab">real deals tracked</span></div>
 `;
@@ -598,7 +465,7 @@ function render(){
         <div class="city display">${currentStore.c}, ${currentStore.s}</div>
         <div class="addr">${currentStore.a}</div>
       </div>
-      <div class="verify-badge">✓ Verified · last checked ${DEALS.find(d=>d.s===currentStore.s && d.c===currentStore.c)?.d || ''}</div>
+      <div class="verify-badge">✓ Store data · checked ${DEALS.find(d=>d.s===currentStore.s && d.c===currentStore.c)?.d || ''}</div>
     </div>
   `;
 
@@ -691,7 +558,7 @@ function renderBest(){
     <div class="calc-card">
       <div class="calc-left">
         <h3 class="display">Your yearly savings estimate</h3>
-        <p>Based on the average discount across ${currentStore ? `${currentStore.c}, ${currentStore.s}'s` : 'all tracked'} verified deals (~$${perOrderSavings} per order). Adjust how often you order.</p>
+        <p>Based on the average discount across ${currentStore ? `${currentStore.c}, ${currentStore.s}'s` : 'all tracked'} tracked deals (~$${perOrderSavings} per order). Adjust how often you order.</p>
         <div class="calc-input-row">
           <span style="font-size:13.5px;color:var(--ink-soft)">Orders per month</span>
           <input type="number" id="calcOrders" min="0" max="30" value="2">
@@ -704,7 +571,7 @@ function renderBest(){
     </div>
 
     <div class="board-toggle">
-      <button class="type-chip ${boardView==='savings'?'active':''}" data-view="savings">Biggest savings right now</button>
+      <button class="type-chip ${boardView==='savings'?'active':''}" data-view="savings">Biggest displayed savings</button>
       <button class="type-chip ${boardView==='bystate'?'active':''}" data-view="bystate">Large 1-topping pizza, by state</button>
     </div>
     <div id="boardHolder"></div>
@@ -745,7 +612,7 @@ function renderBoard(){
             </tr>`).join('')}
         </tbody>
       </table></div>
-      <p class="board-note">Ranked by dollar amount saved vs. the listed original price, across every verified deal in the dataset.</p>
+      <p class="board-note">Ranked by dollar amount saved vs. the listed original price, across every tracked deal in the dataset.</p>
     `;
   } else {
     const matches = DEALS.filter(d => {
@@ -835,7 +702,7 @@ document.getElementById('planLocateBtn').addEventListener('click', () => {
     STORES.forEach(s => { const d = haversine(latitude, longitude, s.lat, s.lng); if(d < best){ best = d; nearest = s; } });
     document.getElementById('planSearchInput').value = `${nearest.c}, ${nearest.s}`;
     planSetStore(nearest);
-    feedback.innerHTML = `<span style="color:var(--green)">✓ Nearest verified store: ${nearest.c}, ${nearest.s} (~${best.toFixed(0)} mi away)</span>`;
+    feedback.innerHTML = `<span style="color:var(--green)">✓ Nearest sampled store: ${nearest.c}, ${nearest.s} (~${best.toFixed(0)} mi away)</span>`;
   }, () => { feedback.textContent = "Couldn't get your location — try searching instead."; });
 });
 
@@ -952,7 +819,7 @@ function computePlan(){
           <p class="pick-reason">~$${c.costPerPerson.toFixed(2)}/person &middot; ${enoughFor} &middot; ${budgetNote}.</p>
           <div class="pick-meta">
             <span>Store: ${currentStore.c}, ${currentStore.s} (exact match)</span>
-            <span>Last verified: ${c.deal.d || lastDate}</span>
+            <span>Data checked: ${c.deal.d || lastDate}</span>
           </div>
         </div>
         <div class="pick-price">
@@ -965,5 +832,7 @@ function computePlan(){
 }
 
 </script>
+
+</div>
 </body>
 </html>
