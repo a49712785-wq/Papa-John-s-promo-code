@@ -525,6 +525,10 @@ const tabBestBtn = document.getElementById('tabBestBtn');
 const tabFinder = document.getElementById('tabFinder');
 const tabBest = document.getElementById('tabBest');
 
+// Establish the initial state explicitly so the tool never renders all tabs at once.
+tabFinder.style.display = '';
+tabBest.style.display = 'none';
+
 tabFinderBtn.addEventListener('click', () => {
   tabFinder.style.display = ''; tabBest.style.display = 'none';
   tabFinderBtn.classList.add('active'); tabBestBtn.classList.remove('active');
