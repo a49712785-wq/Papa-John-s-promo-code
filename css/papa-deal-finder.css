@@ -1,31 +1,31 @@
 .pj-deal-finder{
-    --ink:#2B211A;
-    --ink-soft:#7A6B5D;
-    --paper:#FBF3E6;
+    --ink:#243126;
+    --ink-soft:#766F67;
+    --paper:#FFF9F1;
     --paper-raised:#FFFFFF;
-    --line:#E7D9C3;
-    --gold:#B8862B;
-    --gold-soft:#F3E4C2;
-    --green:#4C6B3C;
-    --green-soft:#E4EBDB;
-    --rose:#B84C34;
-    --rose-soft:#F5E1D8;
+    --line:#DED5CA;
+    --gold:#B7C93A;
+    --gold-soft:#F1F5D8;
+    --green:#2F7D3F;
+    --green-soft:#E5F1E5;
+    --rose:#D71920;
+    --rose-soft:#FCE5E6;
     --radius:14px;
   }.pj-deal-finder:not([data-theme="light"]){
     /* default is light unless system says dark AND no explicit light chosen */
   }
   @media (prefers-color-scheme: dark){.pj-deal-finder:not([data-theme="light"]){
-      --ink:#F1E6D8;
-      --ink-soft:#C4B49F;
-      --paper:#1C1611;
-      --paper-raised:#26201A;
-      --line:#3B3126;
-      --gold:#E0AC53;
-      --gold-soft:#3E2F17;
-      --green:#8FAE7C;
-      --green-soft:#25301F;
-      --rose:#E0855F;
-      --rose-soft:#3A2419;
+      --ink:#F6F1E8;
+      --ink-soft:#C9BFB2;
+      --paper:#17130F;
+      --paper-raised:#211B15;
+      --line:#3A3129;
+      --gold:#C7D83F;
+      --gold-soft:#293019;
+      --green:#70B85C;
+      --green-soft:#203022;
+      --rose:#F04A50;
+      --rose-soft:#382022;
     }
   }.pj-deal-finder[data-theme="dark"]{
     --ink:#F1E6D8;
@@ -54,37 +54,38 @@
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
     padding-top:env(safe-area-inset-top,0px);
-  }.pj-deal-finder .topbar-inner{display:flex; align-items:center; justify-content:space-between; height:56px;}.pj-deal-finder .brand{display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:.2px; font-size:15px;}.pj-deal-finder .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}.pj-deal-finder .theme-toggle{
-    border:1px solid var(--line); background:var(--paper-raised); color:var(--ink-soft);
-    border-radius:999px; width:34px;height:34px; display:flex;align-items:center;justify-content:center;
+  }.pj-deal-finder .topbar-inner{display:flex; align-items:center; justify-content:space-between; height:56px;}.pj-deal-finder .brand{display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:.2px; font-size:15px;}.pj-deal-finder .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--green);}.pj-deal-finder .theme-toggle{
+    border:1px solid var(--line); background:var(--paper-raised); color:var(--green);
+    border-radius:999px; width:42px;height:42px; display:flex;align-items:center;justify-content:center;
     cursor:pointer; font-size:15px;
-  }.pj-deal-finder .tab-nav{display:flex; gap:22px; height:42px; align-items:center;}.pj-deal-finder .tab-btn{
-    background:none; border:none; font-family:inherit; font-size:14px; color:var(--ink-soft);
-    cursor:pointer; padding:0 0 12px; height:42px; border-bottom:2px solid transparent; font-weight:500;
-  }.pj-deal-finder .tab-btn.active{color:var(--ink); border-bottom-color:var(--rose); font-weight:600;}.pj-deal-finder /* ---------- Hero ---------- */
+  }.pj-deal-finder .tab-nav{display:flex; gap:28px; height:50px; align-items:center;}.pj-deal-finder .tab-btn{
+    background:none; border:none; font-family:inherit; font-size:15px; color:var(--ink-soft);
+    cursor:pointer; padding:0 0 13px; height:50px; border-bottom:3px solid transparent; font-weight:500;
+  }.pj-deal-finder .tab-btn.active{color:var(--ink); border-bottom-color:var(--green); font-weight:700;}.pj-deal-finder /* ---------- Hero ---------- */
   .hero{padding:52px 0 28px;}.pj-deal-finder .hero h1{
+    color:var(--ink);
     font-size:clamp(30px,5vw,46px); line-height:1.06; margin:0 0 14px; font-weight:600;
     max-width:15ch;
   }.pj-deal-finder .hero p.lead{color:var(--ink-soft); font-size:17px; line-height:1.55; max-width:52ch; margin:0 0 28px;}.pj-deal-finder p.disclaimer{
     font-size:12.5px; color:var(--ink-soft); max-width:56ch; line-height:1.5; margin:0 0 26px;
     padding-left:12px; border-left:2px solid var(--line);
-  }.pj-deal-finder .stat-row{display:flex; gap:26px; flex-wrap:wrap; margin:0 0 30px;}.pj-deal-finder .stat{min-width:120px;}.pj-deal-finder .stat .num{font-family:'Fraunces',serif; font-size:26px; font-weight:600; display:block;}.pj-deal-finder .stat .lab{font-size:12.5px; color:var(--ink-soft);}.pj-deal-finder .stat .lab.trust{color:var(--green);}.pj-deal-finder /* ---------- Search ---------- */
+  }.pj-deal-finder .stat-row{display:flex; gap:26px; flex-wrap:wrap; margin:0 0 30px;}.pj-deal-finder .stat{min-width:120px;}.pj-deal-finder .stat .num{font-family:'Fraunces',serif; font-size:26px; font-weight:600; display:block;}.pj-deal-finder .stat .lab{font-size:12.5px; color:var(--ink-soft);}.pj-deal-finder .stat .lab.trust{color:var(--green); font-weight:600;}.pj-deal-finder /* ---------- Search ---------- */
   .search-card{
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:18px; box-shadow:0 1px 2px rgba(0,0,0,.03);
-  }.pj-deal-finder .search-row{display:flex; gap:10px; flex-wrap:wrap;}.pj-deal-finder .search-input-wrap{flex:1 1 260px; position:relative;}.pj-deal-finder .search-input{
-    width:100%; padding:13px 16px; border-radius:10px; border:1px solid var(--line);
+  }.pj-deal-finder .search-row{display:flex; gap:10px; flex-wrap:wrap; align-items:stretch;}.pj-deal-finder .search-input-wrap{flex:1 1 320px; position:relative;}.pj-deal-finder .search-input{
+    width:100%; min-height:48px; padding:13px 16px; border-radius:10px; border:1px solid var(--line);
     background:var(--paper); color:var(--ink); font-size:16px; font-family:inherit;
   }.pj-deal-finder .search-input:focus{outline:2px solid var(--gold); outline-offset:1px;}.pj-deal-finder .search-btn{
-    background:var(--ink); color:var(--paper); border:none; border-radius:10px;
-    padding:0 22px; font-size:15px; font-weight:600; cursor:pointer; font-family:inherit;
-  }.pj-deal-finder .search-btn:hover{opacity:.88;}.pj-deal-finder .locate-btn{
-    background:transparent; color:var(--ink-soft); border:1px solid var(--line); border-radius:10px;
-    padding:0 16px; font-size:14px; cursor:pointer; font-family:inherit; white-space:nowrap;
-  }.pj-deal-finder .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:13px;}.pj-deal-finder .chip{
+    min-height:48px; min-width:132px; background:var(--green); color:#fff; border:1px solid var(--green); border-radius:10px;
+    padding:0 22px; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; box-shadow:0 2px 5px rgba(0,0,0,.12);
+  }.pj-deal-finder .search-btn:hover{filter:brightness(.94);}.pj-deal-finder .locate-btn{
+    min-height:48px; min-width:145px; background:transparent; color:var(--ink); border:1px solid var(--line); border-radius:10px;
+    padding:0 16px; font-size:14px; font-weight:600; cursor:pointer; font-family:inherit; white-space:nowrap;
+  }.pj-deal-finder .locate-btn:hover{border-color:var(--green); color:var(--green); background:var(--green-soft);}.pj-deal-finder .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:13px;}.pj-deal-finder .chip{
     font-size:13px; padding:6px 12px; border-radius:999px; border:1px solid var(--line);
     background:var(--paper); color:var(--ink-soft); cursor:pointer; font-family:inherit;
-  }.pj-deal-finder .chip:hover{border-color:var(--gold); color:var(--ink);}.pj-deal-finder /* ---------- Results ---------- */
+  }.pj-deal-finder .chip:hover{border-color:var(--green); color:var(--green); background:var(--green-soft);}.pj-deal-finder /* ---------- Results ---------- */
   #results{padding:34px 0 90px;}.pj-deal-finder .store-banner{
     display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
@@ -102,7 +103,7 @@
     font-size:13px; padding:7px 13px; border-radius:999px; border:1px solid var(--line);
     background:var(--paper-raised); color:var(--ink-soft); cursor:pointer; font-family:inherit;
     white-space:nowrap;
-  }.pj-deal-finder .type-chip.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}.pj-deal-finder .sort-select{
+  }.pj-deal-finder .type-chip.active{background:var(--green); color:#fff; border-color:var(--green);}.pj-deal-finder .sort-select{
     margin-left:auto; font-size:13px; padding:7px 10px; border-radius:10px; border:1px solid var(--line);
     background:var(--paper-raised); color:var(--ink); font-family:inherit;
   }.pj-deal-finder .deal-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px;}.pj-deal-finder .deal-card{
@@ -141,11 +142,16 @@
   }.pj-deal-finder .appetite-group{display:flex; gap:6px;}.pj-deal-finder .appetite-opt{
     flex:1; padding:9px 4px; text-align:center; font-size:12.5px; border-radius:8px; cursor:pointer;
     border:1px solid var(--line); background:var(--paper); color:var(--ink-soft);
-  }.pj-deal-finder .appetite-opt.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}.pj-deal-finder .plan-note{font-size:12.5px; color:var(--ink-soft); margin:0 0 30px;}.pj-deal-finder .pick-card{
+  }.pj-deal-finder .appetite-opt.active{background:var(--green); color:#fff; border-color:var(--green);}.pj-deal-finder .plan-note{font-size:12.5px; color:var(--ink-soft); margin:0 0 30px;}.pj-deal-finder .pick-card{
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:18px 20px; margin-bottom:12px; display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;
   }.pj-deal-finder .pick-rank{
     font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--gold); min-width:34px;
-  }.pj-deal-finder .pick-.pj-deal-finder{flex:1 1 260px;}.pj-deal-finder .pick-title{font-weight:600; font-size:15.5px; margin:0 0 4px;}.pj-deal-finder .pick-reason{font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0 0 8px;}.pj-deal-finder .pick-meta{display:flex; gap:10px; flex-wrap:wrap; font-size:12px; color:var(--ink-soft);}.pj-deal-finder .pick-meta span{background:var(--paper); border:1px solid var(--line); padding:3px 9px; border-radius:999px;}.pj-deal-finder .pick-price{text-align:right; min-width:90px;}.pj-deal-finder .pick-price .cur{font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:600;}.pj-deal-finder .pick-price .pp{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
+  }.pj-deal-finder .pick-content{flex:1 1 260px;}.pj-deal-finder .pick-title{font-weight:600; font-size:15.5px; margin:0 0 4px;}.pj-deal-finder .pick-reason{font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0 0 8px;}.pj-deal-finder .pick-meta{display:flex; gap:10px; flex-wrap:wrap; font-size:12px; color:var(--ink-soft);}.pj-deal-finder .pick-meta span{background:var(--paper); border:1px solid var(--line); padding:3px 9px; border-radius:999px;}.pj-deal-finder .pick-price{text-align:right; min-width:90px;}.pj-deal-finder .pick-price .cur{font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:600;}.pj-deal-finder .pick-price .pp{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
   @media (max-width:560px){.pj-deal-finder .filter-bar{position:static;}
   }
+
+/* Papa John's brand-aligned refinements */
+.pj-deal-finder .display{color:var(--ink);}
+.pj-deal-finder .section-label,.pj-deal-finder .deal-title{color:var(--ink);}
+@media (max-width:700px){.pj-deal-finder .search-row{display:grid;grid-template-columns:1fr 1fr;}.pj-deal-finder .search-input-wrap{grid-column:1/-1;}.pj-deal-finder .locate-btn,.pj-deal-finder .search-btn{width:100%;}.pj-deal-finder .tab-nav{gap:18px;overflow-x:auto;}.pj-deal-finder .tab-btn{font-size:14px;white-space:nowrap;}}
