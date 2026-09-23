@@ -109,6 +109,29 @@ nav.topnav .wrap{display:flex;align-items:center;justify-content:space-between;g
 .tldr ul{margin:0;font-size:14.5px;padding-left:1.1em;}
 .tldr li{margin-bottom:7px;}
 
+
+/* ---- homepage hero banner ---- */
+.hero-banner-link{
+  display:block;
+  width:100%;
+  max-width:800px;
+  margin:26px auto 0;
+  text-decoration:none;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow-card);
+}
+.hero-banner-image{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:20px;
+}
+@media (max-width:640px){
+  .hero-banner-link{margin-top:20px;border-radius:14px;}
+  .hero-banner-image{border-radius:14px;}
+}
+
 /* ---- search + filters ---- */
 .search-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:center;}
 .search-box{
