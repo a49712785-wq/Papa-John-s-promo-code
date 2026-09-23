@@ -155,3 +155,307 @@
 .pj-deal-finder .display{color:var(--ink);}
 .pj-deal-finder .section-label,.pj-deal-finder .deal-title{color:var(--ink);}
 @media (max-width:700px){.pj-deal-finder .search-row{display:grid;grid-template-columns:1fr 1fr;}.pj-deal-finder .search-input-wrap{grid-column:1/-1;}.pj-deal-finder .locate-btn,.pj-deal-finder .search-btn{width:100%;}.pj-deal-finder .tab-nav{gap:18px;overflow-x:auto;}.pj-deal-finder .tab-btn{font-size:14px;white-space:nowrap;}}
+
+/* ---------- Mobile responsive pass ---------- */
+@media (max-width:700px){
+  .pj-deal-finder{
+    width:100%;
+    max-width:100%;
+    overflow-x:clip;
+  }
+  .pj-deal-finder .wrap{
+    width:100%;
+    max-width:none;
+    min-width:0;
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  /* Compact sticky header: keep all three tabs usable without wrapping. */
+  .pj-deal-finder header.top{
+    z-index:30;
+  }
+  .pj-deal-finder .topbar-inner{
+    height:48px;
+    min-width:0;
+  }
+  .pj-deal-finder .brand{
+    min-width:0;
+    max-width:calc(100% - 50px);
+    font-size:14px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .pj-deal-finder .theme-toggle{
+    width:38px;
+    height:38px;
+    flex:0 0 38px;
+  }
+  .pj-deal-finder .tab-nav{
+    height:44px;
+    gap:20px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    min-width:0;
+  }
+  .pj-deal-finder .tab-nav::-webkit-scrollbar{display:none;}
+  .pj-deal-finder .tab-btn{
+    flex:0 0 auto;
+    height:44px;
+    padding:0 0 10px;
+    font-size:13.5px;
+    white-space:nowrap;
+  }
+
+  /* Reduce the large desktop hero spacing and keep the stats visible as a compact row. */
+  .pj-deal-finder .hero{
+    padding:28px 0 18px;
+  }
+  .pj-deal-finder .hero h1{
+    font-size:28px;
+    line-height:1.08;
+    max-width:18ch;
+    margin-bottom:10px;
+  }
+  .pj-deal-finder .hero p.lead{
+    font-size:15px;
+    line-height:1.45;
+    margin-bottom:18px;
+  }
+  .pj-deal-finder .stat-row{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .pj-deal-finder .stat{
+    min-width:0;
+  }
+  .pj-deal-finder .stat .num{
+    font-size:22px;
+  }
+  .pj-deal-finder .stat .lab{
+    font-size:11px;
+    line-height:1.25;
+  }
+
+  /* Prevent the search field from exceeding the card at narrow CSS viewports. */
+  .pj-deal-finder .search-card{
+    padding:12px;
+    border-radius:12px;
+  }
+  .pj-deal-finder .search-row{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:8px;
+    min-width:0;
+  }
+  .pj-deal-finder .search-input-wrap{
+    grid-column:1/-1;
+    min-width:0;
+    width:100%;
+  }
+  .pj-deal-finder .search-input{
+    display:block;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    min-height:46px;
+    padding:11px 13px;
+    font-size:16px;
+  }
+  .pj-deal-finder .locate-btn,
+  .pj-deal-finder .search-btn{
+    width:100%;
+    min-width:0;
+    min-height:46px;
+    padding-left:8px;
+    padding-right:8px;
+  }
+  .pj-deal-finder .chips{
+    gap:6px;
+    margin-top:10px;
+  }
+  .pj-deal-finder .chip{
+    font-size:12px;
+    padding:6px 10px;
+  }
+
+  .pj-deal-finder #results{
+    padding:22px 0 48px;
+    scroll-margin-top:94px;
+  }
+  .pj-deal-finder .store-banner{
+    gap:9px;
+    padding:14px;
+    margin-bottom:4px;
+  }
+  .pj-deal-finder .store-banner .city{
+    font-size:18px;
+  }
+  .pj-deal-finder .store-banner .addr{
+    font-size:13px;
+    line-height:1.4;
+  }
+  .pj-deal-finder .verify-badge{
+    max-width:100%;
+    font-size:11.5px;
+    padding:5px 9px;
+  }
+
+  /* Filters become a compact, non-sticky control block on phones. */
+  .pj-deal-finder .filter-bar{
+    position:static;
+    gap:6px;
+    margin:14px 0 12px;
+    padding:4px 0;
+  }
+  .pj-deal-finder .type-chip{
+    font-size:12px;
+    padding:6px 10px;
+  }
+  .pj-deal-finder .sort-select{
+    flex:1 1 100%;
+    width:100%;
+    min-width:0;
+    min-height:38px;
+    margin-left:0;
+    font-size:12.5px;
+  }
+
+  .pj-deal-finder .deal-grid{
+    grid-template-columns:minmax(0,1fr);
+    gap:8px;
+  }
+  .pj-deal-finder .deal-card{
+    min-width:0;
+    padding:12px;
+    gap:7px;
+  }
+  .pj-deal-finder .deal-top{
+    gap:6px;
+  }
+  .pj-deal-finder .badge-tag{
+    max-width:68%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-size:10.5px;
+    padding:3px 7px;
+  }
+  .pj-deal-finder .type-tag{
+    font-size:10.5px;
+    text-align:right;
+  }
+  .pj-deal-finder .deal-title{
+    font-size:14.5px;
+    line-height:1.3;
+  }
+  .pj-deal-finder .price-current{
+    font-size:20px;
+  }
+  .pj-deal-finder .price-original{
+    font-size:12.5px;
+  }
+  .pj-deal-finder .savings-tag{
+    font-size:11px;
+    padding:2px 6px;
+  }
+
+  .pj-deal-finder .browse-section{
+    padding:8px 0 44px;
+    scroll-margin-top:94px;
+  }
+  .pj-deal-finder .browse-head{
+    display:block;
+    margin-bottom:12px;
+  }
+  .pj-deal-finder .browse-head h2{
+    font-size:20px;
+    line-height:1.15;
+  }
+  .pj-deal-finder .browse-head > span{
+    display:block;
+    margin-top:6px;
+  }
+  .pj-deal-finder .state-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:7px;
+  }
+  .pj-deal-finder .state-tile{
+    min-width:0;
+    padding:9px 10px;
+  }
+  .pj-deal-finder .state-tile .sname{
+    font-size:12.5px;
+    line-height:1.2;
+  }
+  .pj-deal-finder .state-tile .scount{
+    font-size:11px;
+    line-height:1.2;
+    margin-top:2px;
+  }
+
+  /* Best Deals / Savings and Plan My Order also get a narrow-screen pass. */
+  .pj-deal-finder .calc-card{
+    padding:14px;
+    gap:14px;
+    margin:16px 0 24px;
+  }
+  .pj-deal-finder .calc-left,
+  .pj-deal-finder .calc-result{
+    min-width:0;
+    flex-basis:100%;
+  }
+  .pj-deal-finder .calc-result{
+    padding:14px;
+  }
+  .pj-deal-finder .board-toggle{
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .pj-deal-finder .table-wrap{
+    max-width:100%;
+    overflow-x:auto;
+  }
+  .pj-deal-finder .board-table{
+    min-width:620px;
+  }
+  .pj-deal-finder .plan-form{
+    grid-template-columns:minmax(0,1fr);
+    gap:10px;
+    padding:14px;
+    margin:16px 0 8px;
+  }
+  .pj-deal-finder .appetite-group{
+    gap:5px;
+  }
+  .pj-deal-finder .appetite-opt{
+    min-width:0;
+    padding:8px 3px;
+    font-size:12px;
+  }
+  .pj-deal-finder .pick-card{
+    padding:12px;
+    gap:10px;
+  }
+  .pj-deal-finder .pick-content,
+  .pj-deal-finder .pick-body{
+    flex:1 1 220px;
+    min-width:0;
+  }
+  .pj-deal-finder .pick-rank{
+    min-width:26px;
+    font-size:22px;
+  }
+  .pj-deal-finder .pick-price{
+    min-width:0;
+    text-align:left;
+    flex:0 0 auto;
+  }
+  .pj-deal-finder footer{
+    padding:20px 0 30px;
+  }
+}
