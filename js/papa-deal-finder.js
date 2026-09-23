@@ -1,4 +1,3 @@
-
 const DEALS = JSON.parse(document.getElementById('deals-data').textContent);
 const STORES = JSON.parse(document.getElementById('stores-data').textContent);
 
@@ -277,6 +276,10 @@ const tabBestBtn = document.getElementById('tabBestBtn');
 const tabFinder = document.getElementById('tabFinder');
 const tabBest = document.getElementById('tabBest');
 
+// Establish the initial state explicitly so the tool never renders all tabs at once.
+tabFinder.style.display = '';
+tabBest.style.display = 'none';
+
 tabFinderBtn.addEventListener('click', () => {
   tabFinder.style.display = ''; tabBest.style.display = 'none';
   tabFinderBtn.classList.add('active'); tabBestBtn.classList.remove('active');
@@ -549,8 +552,15 @@ function computePlan(){
   });
 
   const withinBudget = candidates.filter(c => c.deal.cp <= budget);
-  const pool = withinBudget.length ? withinBudget : candidates;
-  const ranked = [...pool].sort((a,b) => a.costPerPerson - b.costPerPerson).slice(0,3);
+  const affordableAndEnough = withinBudget.filter(c => c.serves >= people);
+  const enough = candidates.filter(c => c.serves >= people);
+  const pool = affordableAndEnough.length ? affordableAndEnough : (withinBudget.length ? withinBudget : (enough.length ? enough : candidates));
+  const ranked = [...pool].sort((a,b) => {
+    const aEnough = a.serves >= people;
+    const bEnough = b.serves >= people;
+    if(aEnough !== bEnough) return aEnough ? -1 : 1;
+    return a.costPerPerson - b.costPerPerson;
+  }).slice(0,3);
 
   if(!ranked.length){
     resultsWrap.innerHTML = `<div class="empty-state"><h3 class="display">No pizza deals matched</h3><p>Try raising the budget, or check "Find My Deals" — this store's current offers may be mostly sides or drinks right now.</p></div>`;
@@ -583,300 +593,3 @@ function computePlan(){
   }).join('');
 }
 
-</script>
-
-    </div>
-  </div>
-</section>
-
-  <section id="data-methodology">
-    <div class="wrap">
-      <div class="section-head"><h2>Papa John's Promo Code Data: 102 Stores, 1,714 Deals, 50 States</h2></div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:8px; font-size:15px; line-height:1.7;">We pulled deal information directly from individual Papa John's ordering and deals pages at 102 sampled locations across 99 cities in 50 states plus D.C. Prices and offers were recorded on <strong>September 22, 2026</strong>. This is a dated snapshot, not a live feed. Offers and prices can change after collection, so always confirm on the ordering page before checkout.</p>
-    </div>
-  </section>
-
-  <section id="ultimate-pepperoni" class="band">
-    <div class="wrap">
-      <div class="section-head"><h2>Papa John's Ultimate Pepperoni Pizza Price by Location: $12.99 to $21.99</h2></div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:8px; font-size:15px; line-height:1.7;">The same named deal can cost a different amount depending on your store, even within one state.</p>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:14px; font-size:15px; line-height:1.7;">Ultimate Pepperoni Pizza appeared at all 102 sampled stores at <strong>5 different prices: $12.99&ndash;$21.99</strong>, a $9.00 spread.</p>
-      <div class="table-scroll">
-      <table class="data">
-        <tr><th>Sampled Location</th><th>Current Price</th><th>Displayed Original</th><th>Displayed Savings</th></tr>
-        <tr><td>Cincinnati, OH</td><td>$12.99</td><td>$18.99</td><td>$6.00</td></tr>
-        <tr><td>Rockford, IL</td><td>$12.99</td><td>$21.99</td><td>$9.00</td></tr>
-        <tr><td>Springfield, IL</td><td>$12.99</td><td>$21.99</td><td>$9.00</td></tr>
-        <tr><td>Milwaukee, WI</td><td>$12.99</td><td>$21.99</td><td>$9.00</td></tr>
-        <tr><td>Elizabeth, NJ</td><td>$12.99</td><td>$21.99</td><td>$9.00</td></tr>
-        <tr><td>San Francisco, CA</td><td>$21.99</td><td>$27.99</td><td>$6.00</td></tr>
-      </table>
-      </div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:18px; font-size:15px; line-height:1.7;">Same pattern within California alone: 5 of 6 sampled cities priced at $13.99, and San Francisco stood apart at $21.99:</p>
-      <div class="table-scroll">
-      <table class="data">
-        <tr><th>Sampled City</th><th>Current Price</th><th>Displayed Original</th><th>Displayed Savings</th></tr>
-        <tr><td>Los Angeles</td><td>$13.99</td><td>$22.99</td><td>$9.00</td></tr>
-        <tr><td>Sacramento</td><td>$13.99</td><td>$23.00</td><td>$9.01</td></tr>
-        <tr><td>Bakersfield</td><td>$13.99</td><td>$22.49</td><td>$8.50</td></tr>
-        <tr><td>San Jose</td><td>$13.99</td><td>$28.99</td><td>$15.00</td></tr>
-        <tr><td>San Diego</td><td>$13.99</td><td>$30.00</td><td>$16.01</td></tr>
-        <tr><td>San Francisco</td><td>$21.99</td><td>$27.99</td><td>$6.00</td></tr>
-      </table>
-      </div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:18px; font-size:15px; line-height:1.7;">Other widely-carried deals show the same spread: Papa Pairings ($6.99&ndash;$11.99), Ultimate Bundle ($14.99&ndash;$23.99), The Works Large ($13.99&ndash;$17.99).</p>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:14px; font-size:15px; line-height:1.7;"><strong>Why:</strong> not city size, since LA and San Diego price the same as much smaller markets. It's store/market-specific. <strong>Bottom line: don't assume a price from another city applies to yours.</strong> Check your store below.</p>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:10px; font-size:13.5px; font-style:italic;">One store sampled per city.</p>
-    </div>
-  </section>
-
-  <section id="largest-saving">
-    <div class="wrap">
-      <div class="section-head"><h2>Largest Displayed Saving: 24 Chicken Wings for $19.99 in Tacoma, WA</h2></div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:8px; font-size:15px; line-height:1.7;">Among the 661 deals where we had both a current and original price to compare, the median displayed saving was $5.90. The largest was in Tacoma, WA:</p>
-      <div class="table-scroll">
-      <table class="data">
-        <tr><th>Sampled Location</th><th>Deal</th><th>Current Price</th><th>Original Price</th><th>Displayed Savings</th></tr>
-        <tr><td>Tacoma, WA</td><td>24 Chicken Wings</td><td>$19.99</td><td>$38.99</td><td>$19.00</td></tr>
-        <tr><td>Portland, OR</td><td>24 Chicken Wings</td><td>$19.99</td><td>$37.99</td><td>$18.00</td></tr>
-        <tr><td>Vancouver, WA</td><td>24 Chicken Wings</td><td>$19.99</td><td>$37.99</td><td>$18.00</td></tr>
-      </table>
-      </div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:18px; font-size:15px; line-height:1.7;">Worth noticing: the <em>current</em> price is identical at $19.99 in all three cities. It's the <em>displayed original price</em> that differs, which is why the savings figure isn't a reliable ranking signal on its own. Compare the current price first; treat displayed savings as context, not the deciding number.</p>
-    </div>
-  </section>
-
-  <section id="which-deal-fits" class="band">
-    <div class="wrap">
-      <div class="section-head"><h2>Which Papa John's Deal Fits Your Order?</h2></div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:8px; font-size:15px; line-height:1.7;">The biggest headline discount isn't automatically the most useful offer for what you're ordering. Match the deal type to your situation:</p>
-      <ul style="max-width:760px; color:var(--pj-muted); margin-top:14px; font-size:15px; line-height:1.8; padding-left:20px;">
-        <li><strong>Ordering for one</strong>: check single-pizza pricing before paying for a bundle sized for more people.</li>
-        <li><strong>Ordering for two or more</strong>: compare bundle pricing against buying the same items separately; bundles only win if you'd have bought everything in them anyway.</li>
-        <li><strong>Feeding a group</strong>: family-size and multi-pizza deals are where combining items creates real value.</li>
-        <li><strong>On a fixed budget</strong>: set your limit first, then filter to deals that fit it, rather than adding items to chase a bigger discount.</li>
-        <li><strong>Chasing the lowest price</strong>: use the current price at your specific location, not the discount percentage.</li>
-      </ul>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:18px; font-size:15px; line-height:1.7;"><strong>How this works in practice</strong> (San Francisco used here just to show the method): two people, about $25 to spend. Ultimate Pepperoni alone runs $21.99 there, using most of the budget on one item. Papa Pairings, which ranged from $6.99&ndash;$11.99 across our sample, leaves more room within that budget for an additional item. The bigger discount (Ultimate Pepperoni's $6.00 displayed saving) isn't the better fit here; the deal structure is. <strong>Plan My Order runs this exact comparison for your own city and order</strong> once you enter them above, not just San Francisco.</p>
-    </div>
-  </section>
-
-  <section id="plan-my-order">
-    <div class="wrap">
-      <div class="section-head"><h2>Plan My Order: Papa John's Deal Finder by Order Size and Budget</h2></div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:8px; font-size:15px; line-height:1.7;">Tell the tool what you're ordering, how many people you're feeding, and what matters most: price, savings, or deal type. It narrows the full deal list down to what actually fits, instead of you scanning every offer at your store.</p>
-    </div>
-  </section>
-
-  <section id="promo-vs-rewards" class="band">
-    <div class="wrap">
-      <div class="section-head"><h2>Papa John's Promo Codes vs. Papa Rewards: How the Two Work Together</h2></div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:8px; font-size:15px; line-height:1.7;">A promo code and Papa Rewards solve different problems, and treating them as interchangeable can cost you money either way.</p>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:14px; font-size:15px; line-height:1.7;"><strong>How Papa Rewards works</strong>, per Papa John's own program page: you earn 1 point for every $1 spent, and you receive $1 in Papa Dough for every $10 spent. Papa Dough applies to a future order, not the one that earned it. This comes from Papa John's official program terms, not from our 102-store deal dataset &mdash; the two are separate sources.</p>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:14px; font-size:15px; line-height:1.7;"><strong>Which one actually saves you more depends on how often you order:</strong></p>
-      <ul style="max-width:760px; color:var(--pj-muted); margin-top:10px; font-size:15px; line-height:1.8; padding-left:20px;">
-        <li><strong>One-time order:</strong> a promo code's savings applies now; Rewards only pays off if you plan to come back.</li>
-        <li><strong>Repeat customer:</strong> weigh both &mdash; the promo code's discount on this order, plus the Papa Dough balance building toward the next one.</li>
-        <li><strong>Bigger order:</strong> compare a promo code's displayed savings (see the tables above) against the Papa Dough you'd earn at $1 per $10 spent, to see which actually nets more for that order.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="state-directory">
-    <div class="wrap">
-      <div class="section-head"><h2>Papa John's Promo Codes and Coupons by State (All 50 States + D.C.)</h2></div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:8px; font-size:15px; line-height:1.7;">We sampled 102 locations across 99 cities in all 50 states plus D.C. States with multiple sampled cities let you compare more than one local price point; single-location states reflect the one store we sampled there.</p>
-      <div class="table-scroll">
-      <table class="data">
-        <tr><th>State</th><th>Sampled Cities</th><th>Locations</th><th>Deal Records</th><th>Highest Displayed Savings in Sample</th></tr>
-        <tr><td>Alabama</td><td>Huntsville</td><td>1</td><td>15</td><td>$8.00</td></tr>
-        <tr><td>Alaska</td><td>Anchorage</td><td>1</td><td>18</td><td>$6.00</td></tr>
-        <tr><td>Arizona</td><td>Chandler, Mesa, Phoenix, Tucson</td><td>4</td><td>71</td><td>$10.00</td></tr>
-        <tr><td>Arkansas</td><td>Little Rock</td><td>1</td><td>21</td><td>$8.50</td></tr>
-        <tr><td>California</td><td>Bakersfield, Los Angeles, Sacramento, San Diego, San Francisco, San Jose</td><td>6</td><td>77</td><td>$16.01</td></tr>
-        <tr><td>Colorado</td><td>Denver</td><td>1</td><td>21</td><td>$13.00</td></tr>
-        <tr><td>Connecticut</td><td>Bridgeport</td><td>1</td><td>13</td><td>$5.00</td></tr>
-        <tr><td>Delaware</td><td>Wilmington</td><td>1</td><td>20</td><td>$7.00</td></tr>
-        <tr><td>Florida</td><td>Fort Lauderdale, Jacksonville, Miami, Orlando, Tallahassee, Tampa</td><td>6</td><td>109</td><td>$8.00</td></tr>
-        <tr><td>Georgia</td><td>Atlanta, Augusta, Columbus, Savannah</td><td>4</td><td>67</td><td>$16.99</td></tr>
-        <tr><td>Hawaii</td><td>Honolulu</td><td>1</td><td>20</td><td>$11.00</td></tr>
-        <tr><td>Idaho</td><td>Boise</td><td>1</td><td>15</td><td>$9.01</td></tr>
-        <tr><td>Illinois</td><td>Aurora, Chicago, Naperville, Peoria, Rockford, Springfield</td><td>6</td><td>111</td><td>$14.00</td></tr>
-        <tr><td>Indiana</td><td>Indianapolis</td><td>1</td><td>20</td><td>$7.20</td></tr>
-        <tr><td>Iowa</td><td>Des Moines</td><td>1</td><td>20</td><td>$7.00</td></tr>
-        <tr><td>Kansas</td><td>Wichita</td><td>1</td><td>15</td><td>$9.01</td></tr>
-        <tr><td>Kentucky</td><td>Louisville</td><td>1</td><td>20</td><td>$7.20</td></tr>
-        <tr><td>Louisiana</td><td>New Orleans</td><td>1</td><td>15</td><td>$8.00</td></tr>
-        <tr><td>Maine</td><td>Portland</td><td>1</td><td>17</td><td>$7.00</td></tr>
-        <tr><td>Maryland</td><td>Baltimore</td><td>1</td><td>15</td><td>$7.00</td></tr>
-        <tr><td>Massachusetts</td><td>Boston</td><td>1</td><td>17</td><td>$6.00</td></tr>
-        <tr><td>Michigan</td><td>Ann Arbor, Dearborn, Detroit, Grand Rapids</td><td>4</td><td>62</td><td>$9.00</td></tr>
-        <tr><td>Minnesota</td><td>Minneapolis</td><td>1</td><td>15</td><td>$8.51</td></tr>
-        <tr><td>Mississippi</td><td>Jackson</td><td>1</td><td>14</td><td>$13.00</td></tr>
-        <tr><td>Missouri</td><td>Kansas City</td><td>1</td><td>18</td><td>$7.50</td></tr>
-        <tr><td>Montana</td><td>Billings</td><td>1</td><td>17</td><td>$8.00</td></tr>
-        <tr><td>Nebraska</td><td>Omaha</td><td>1</td><td>20</td><td>$10.00</td></tr>
-        <tr><td>Nevada</td><td>Las Vegas</td><td>1</td><td>18</td><td>$6.96</td></tr>
-        <tr><td>New Hampshire</td><td>Manchester</td><td>1</td><td>17</td><td>$6.00</td></tr>
-        <tr><td>New Jersey</td><td>Elizabeth, Jersey City, Newark, Paterson</td><td>4</td><td>53</td><td>$9.00</td></tr>
-        <tr><td>New Mexico</td><td>Albuquerque</td><td>1</td><td>19</td><td>$9.00</td></tr>
-        <tr><td>New York</td><td>Albany, Buffalo, New York, Rochester, Syracuse, Yonkers</td><td>6</td><td>90</td><td>$8.50</td></tr>
-        <tr><td>North Carolina</td><td>Charlotte, Durham, Greensboro, Raleigh</td><td>4</td><td>77</td><td>$7.50</td></tr>
-        <tr><td>North Dakota</td><td>Fargo</td><td>1</td><td>15</td><td>$9.01</td></tr>
-        <tr><td>Ohio</td><td>Cincinnati, Cleveland, Columbus, Toledo</td><td>4</td><td>67</td><td>$8.00</td></tr>
-        <tr><td>Oklahoma</td><td>Oklahoma City</td><td>1</td><td>19</td><td>$7.00</td></tr>
-        <tr><td>Oregon</td><td>Portland</td><td>1</td><td>18</td><td>$18.00</td></tr>
-        <tr><td>Pennsylvania</td><td>Allentown, Erie, Philadelphia, Pittsburgh</td><td>4</td><td>65</td><td>$11.00</td></tr>
-        <tr><td>Rhode Island</td><td>Warwick</td><td>1</td><td>17</td><td>$6.00</td></tr>
-        <tr><td>South Carolina</td><td>Charleston</td><td>1</td><td>17</td><td>$6.00</td></tr>
-        <tr><td>South Dakota</td><td>Sioux Falls</td><td>1</td><td>20</td><td>$7.50</td></tr>
-        <tr><td>Tennessee</td><td>Nashville</td><td>1</td><td>20</td><td>$7.20</td></tr>
-        <tr><td>Texas</td><td>Austin, Dallas, El Paso, Fort Worth, Houston, San Antonio</td><td>6</td><td>105</td><td>$9.01</td></tr>
-        <tr><td>Utah</td><td>Salt Lake City</td><td>1</td><td>16</td><td>$8.40</td></tr>
-        <tr><td>Virginia</td><td>Chesapeake, Norfolk, Richmond, Virginia Beach</td><td>4</td><td>52</td><td>$9.00</td></tr>
-        <tr><td>Washington</td><td>Seattle, Spokane, Tacoma, Vancouver</td><td>4</td><td>76</td><td>$19.00</td></tr>
-        <tr><td>West Virginia</td><td>Charleston</td><td>1</td><td>14</td><td>$9.01</td></tr>
-        <tr><td>Wisconsin</td><td>Milwaukee</td><td>1</td><td>18</td><td>$9.00</td></tr>
-        <tr><td>Wyoming</td><td>Cheyenne</td><td>1</td><td>18</td><td>$8.00</td></tr>
-        <tr><td>Washington, D.C.</td><td>Washington</td><td>1</td><td>20</td><td>$9.00</td></tr>
-      </table>
-      </div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:14px; font-size:13.5px; font-style:italic;">The savings column is the highest displayed saving we observed in that state's sample.</p>
-    </div>
-  </section>
-
-  <section id="city-directory" class="band">
-    <div class="wrap">
-      <div class="section-head"><h2>Papa John's Deals by City: Price and Savings Data for 99 Cities</h2></div>
-      <div class="table-scroll">
-      <table class="data">
-        <tr><th>Sampled City</th><th>Deals Tracked</th><th>What We Found</th></tr>
-        <tr><td>Tacoma, WA</td><td>18</td><td>24 Chicken Wings at $19.99 vs. $38.99, the largest displayed saving in our entire sample: $19.00</td></tr>
-        <tr><td>San Diego, CA</td><td>14</td><td>Ultimate Pepperoni at $13.99 with $16.01 in displayed savings, one of the strongest single-item values we recorded</td></tr>
-        <tr><td>San Francisco, CA</td><td>7</td><td>Ultimate Pepperoni at $21.99, the one clear outlier against $13.99 in every other sampled California city</td></tr>
-        <tr><td>Chicago, IL</td><td>21</td><td>Ultimate Pepperoni at $12.99, the low end of the national range</td></tr>
-        <tr><td>Los Angeles, CA</td><td>13</td><td>Ultimate Pepperoni at $13.99 with $9.00 in displayed savings</td></tr>
-        <tr><td>Detroit, MI</td><td>13</td><td>Family Special listed at $25.99</td></tr>
-        <tr><td>Anchorage, AK</td><td>18</td><td>Family Special listed at $32.99</td></tr>
-      </table>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="band">
-    <div class="wrap">
-      <div class="section-head"><h2>Papa John's Promo Code FAQs</h2></div>
-
-      <details class="faq-item">
-        <summary>Does Papa John's Have Promo Codes, or Only App/Website Deals?</summary>
-        <p>Both. Our sample included code-at-checkout deals and offers that applied automatically with no code. The mix varies by store, so check your location's own deal page.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Why Do Papa John's Promo Codes Cost Different Amounts by Location?</summary>
-        <p>Prices differ by store, not by a simple rule. Ultimate Pepperoni ranged $12.99&ndash;$21.99 across our 102 stores, and it isn't just "big city vs. small city" &mdash; LA and San Diego match much smaller markets. Check your own store's price rather than one you saw elsewhere.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>How Do I Find Papa John's Deals Near Me?</summary>
-        <p>Search by city, state, or ZIP in the finder above, then use Plan My Order to narrow results by order size and budget.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Is the Cheapest Papa John's Deal Always the Best Value?</summary>
-        <p>Not necessarily. A bundle or BOGO can beat a low single-item price depending on group size &mdash; see the San Francisco example above, where the bigger discount wasn't the better fit.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>How Much Can You Save With a Papa John's Promo Code?</summary>
-        <p>It varies. Of 661 records with both prices, the median displayed saving was $5.90; the largest was $19.00 (24 Chicken Wings, Tacoma, WA).</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Are All Papa John's Deals Available at Every Store?</summary>
-        <p>No. Of 402 unique deal titles, 220 appeared at only one sampled location. A deal named for another city may not exist at yours &mdash; confirm on your own store's page.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>How Current Is This Papa John's Deal Data?</summary>
-        <p>Collected September 22, 2026, from each store's own page. It's a snapshot, not live &mdash; confirm before checkout.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can I Stack Multiple Papa John's Promo Codes?</summary>
-        <p>Don't assume codes or offers combine. Our dataset tracked prices and structures, not stacking rules, so check your cart at checkout before counting on it.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do Papa John's Deals Work for Both Delivery and Carryout?</summary>
-        <p>Not always &mdash; some bundles/BOGO deals are carryout-only. Check the fine print on your store's page.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Does a Papa John's Promo Code Work on DoorDash, Uber Eats, or Grubhub?</summary>
-        <p>May not. Third-party platforms often run their own promotions and rules, so check the code's terms and that checkout page before assuming it applies.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Is There a Minimum Order for Papa John's Promo Codes?</summary>
-        <p>Some offers may require a minimum spend or other conditions our dataset didn't capture &mdash; check the specific offer's terms.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Why Isn't My Papa John's Promo Code Working?</summary>
-        <p>Common causes: expired code, unmet minimum spend, an excluded item, or trying to stack two discounts. If it fails, try selecting the deal directly on the store's page instead of entering a code &mdash; many of our sampled offers worked that way.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>How Do I Get Papa John's Text Alerts?</summary>
-        <p>Text "START" to 47272 to subscribe to Papa John's official email/text program for weekly discounts on menu items, per Papa John's own specials page. This is a separate signup from promo codes and isn't something our dataset tracked.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Does Papa John's Offer a Military Discount?</summary>
-        <p>There's no confirmed, standing corporate-wide military discount. What you'll see online (specific percentages, specific codes) generally traces back to individual franchise locations or promotions that have since expired, not a nationwide policy. If this matters to your order, ask your specific store directly rather than relying on a percentage you saw on a coupon site.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>How Do I Apply a Papa John's Promo Code at Checkout?</summary>
-        <p>Per Papa John's own instructions: sign in to your account (or check out as a guest), add your items to the cart, and look for the promo code box, which appears at the top of the menu page or on the checkout page. Enter the code, hit apply, and confirm the discount shows before you pay.</p>
-      </details>
-
-    </div>
-  </section>
-
-  <section id="bottom-line">
-    <div class="wrap">
-      <div class="section-head"><h2>Bottom Line: How to Find the Best Papa John's Promo Code Near You</h2></div>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:8px; font-size:15px; line-height:1.7;">The same Papa John's deal can carry a different price depending on where you're ordering from, sometimes by $9 or more, even within one state, and the difference doesn't track a simple rule like city size. That's exactly why a single nationwide promo code is the wrong starting point.</p>
-      <p style="max-width:760px; color:var(--pj-muted); margin-top:14px; font-size:15px; line-height:1.7;">Start with your location, compare what's actually showing at your store, then match the deal structure to your order size rather than chasing the biggest headline discount. Select your location above to see it.</p>
-    </div>
-  </section>
-
-</main>
-
-<footer id="site-footer" class="site-footer">
-  <div class="wrap">
-    <p><strong>papajohnscoupons.us</strong> is an independent site and is not affiliated with, endorsed by, or operated by Papa John's International, Inc. or any of its franchisees.</p>
-    <p style="margin-top:8px;">All trademarks, logos, and brand names referenced on this site belong to their respective owners. Codes and offers are provided for reference only and are not guaranteed to be current or valid at checkout &mdash; always confirm the discount in your cart before paying.</p>
-    <p style="margin-top:16px; display:flex; gap:16px; flex-wrap:wrap;">
-      <a href="/bogo-deal/">BOGO Deal</a>
-      <a href="/tuesday-special/">Tuesday Special</a>
-      <a href="/papa-rewards/">Papa Rewards</a>
-      <a href="/student-discount/">Student Discount</a>
-      <a href="/military-discount/">Military Discount</a>
-    </p>
-    <p style="margin-top:16px; display:flex; gap:16px; flex-wrap:wrap;">
-      <a href="/about-us/">About Us</a>
-      <a href="/contact-us/">Contact Us</a>
-      <a href="/disclaimer/">Disclaimer</a>
-      <a href="/terms-conditions/">Terms &amp; Conditions</a>
-    </p>
-  </div>
-</footer>
-
-<div class="pj-overlay" id="pjOverlay">
-  <div class="pj-modal" id="pjModal"></div>
-</div>
-
-<script src="/js/script.js?v=1">
