@@ -87,6 +87,26 @@
     </div>
   </section>
 
+  <section id="quick-answer" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Verified Papa John's Promo Codes</h2>
+        <p class="section-sub">Six codes tested live at papajohns.com checkout on October 17, 2026. The rest were checked against coupon databases and community reports the same day. Click any card for terms, then copy the code.</p>
+      </div>
+      <div class="pj-filter-row" style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;">
+        <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter" data-filter="percent-off" aria-pressed="false">Percent off</button>
+        <button type="button" class="filter" data-filter="rewards" aria-pressed="false">Rewards</button>
+        <button type="button" class="filter" data-filter="student-military" aria-pressed="false">Student and military</button>
+        <button type="button" class="filter" data-filter="bundles-other" aria-pressed="false">Bundles and more</button>
+      </div>
+      <input type="search" id="pjSearch" placeholder="Search codes and offers" aria-label="Search codes and offers" style="width:100%;max-width:420px;padding:10px 14px;margin-bottom:6px;border:1px solid #d7dde3;border-radius:8px;font-size:15px;">
+      <div id="pjGrid" class="pj-grid"></div>
+      <p id="pjNoResults" hidden>No codes or offers match your search.</p>
+    </div>
+  </section>
+  <div id="pjOverlay" class="pj-overlay"><div id="pjModal" class="pj-modal" role="dialog" aria-modal="true"></div></div>
+
   <section id="deal-finder-tool" class="band pj-tool-band">
   <div class="wrap">
     <div class="section-head"><h2>Find Papa John's Deals by Location</h2></div>
@@ -477,6 +497,7 @@
 </div>
 
 <script src="/js/papa-deal-finder.js?v=3"></script>
+<script src="/js/deals.js?v=1"></script>
 <script src="/js/script.js?v=1"></script>
 </body>
 </html>
