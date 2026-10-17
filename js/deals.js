@@ -138,26 +138,18 @@
     return hay.indexOf(q.toLowerCase()) !== -1;
   }
 
-  function renderCards(){
-    grid.innerHTML = '';
-    var q = searchInput ? searchInput.value.trim() : '';
-    var visibleCount = 0;
-    DEALS.forEach(function(d, idx){
-      var vm = VERIFY_META[d.verify];
-      var isExpired = d.verify === 'expired';
-      var matches = (activeFilter === 'all' || d.filter === activeFilter) && matchesSearch(d, q);
-      if(matches) visibleCount++;
-      var card = document.createElement('div');
-      card.className = 'pj-card' + (isExpired ? ' is-expired' : '');
-      card.hidden = !matches;
-      card.innerHTML =
+  function cardHTML(d, idx){
+    var vm = VERIFY_META[d.verify];
+    var isExpired = d.verify === 'expired';
+    return '' +
+      '<article class="pj-card' + (isExpired ? ' is-expired' : '') + '">' +
         '<div class="pj-card-top">' +
           '<span class="pj-tag ' + (d.type === 'code' ? 'code' : 'member') + '">' + d.tag + '</span>' +
           '<span class="pj-ribbon">' + d.discount + '</span>' +
         '</div>' +
         '<div class="pj-card-body">' +
-          '<div class="pj-card-title">' + d.title + '</div>' +
-          '<div class="pj-card-desc">' + d.desc + '</div>' +
+          '<h3 class="pj-card-title">' + d.title + '</h3>' +
+          '<p class="pj-card-desc">' + d.desc + '</p>' +
         '</div>' +
         '<div class="pj-verify-row">' +
           '<span class="pj-verify-badge ' + vm.cls + '">' + (isExpired ? warnIcon : checkIcon) + ' ' + vm.label + '</span>' +
@@ -165,14 +157,51 @@
         '</div>' +
         '<div class="pj-card-footer">' +
           (d.type === 'code'
-            ? '<div class="pj-code-face" data-idx="' + idx + '"><span class="pj-masked">' + (isExpired ? 'Expired code' : maskCode(d.code)) + '</span><span class="pj-reveal-label">' + eyeIcon + ' ' + (isExpired ? 'View details' : 'Reveal code') + '</span></div>'
+            ? (isExpired
+              ? '<span class="pj-masked">Expired code</span>'
+              : '<div class="pj-code-row"><code class="pj-code-text">' + d.code + '</code><button type="button" class="pj-copy-inline pj-copy-btn" data-code="' + d.code + '">Copy</button></div>' +
+                '<button type="button" class="pj-details-btn" data-idx="' + idx + '">Terms and details</button>')
             : '<button type="button" class="pj-btn-offer" data-idx="' + idx + '">' + checkIcon + ' Get official deal &amp; offers</button>'
           ) +
-        '</div>';
-      grid.appendChild(card);
-    });
+        '</div>' +
+        '<details class="pj-terms"><summary>Terms and restrictions</summary><p>' + d.restrict + '</p></details>' +
+      '</article>';
+  }
+
+  function renderCards(){
+    var q = searchInput ? searchInput.value.trim() : '';
+    var visibleCount = 0;
+    var existing = grid.querySelectorAll('.pj-card');
+    if(existing.length === DEALS.length){
+      DEALS.forEach(function(d, idx){
+        var matches = (activeFilter === 'all' || d.filter === activeFilter) && matchesSearch(d, q);
+        existing[idx].hidden = !matches;
+        if(matches) visibleCount++;
+      });
+    } else {
+      grid.innerHTML = '';
+      DEALS.forEach(function(d, idx){
+        var matches = (activeFilter === 'all' || d.filter === activeFilter) && matchesSearch(d, q);
+        if(matches) visibleCount++;
+        var tmp = document.createElement('div');
+        tmp.innerHTML = cardHTML(d, idx);
+        var card = tmp.firstChild;
+        card.hidden = !matches;
+        grid.appendChild(card);
+      });
+    }
     grid.querySelectorAll('[data-idx]').forEach(function(el){
+      if(el.dataset.bound) return;
+      el.dataset.bound = '1';
       el.addEventListener('click', function(){ openModal(DEALS[el.dataset.idx]); });
+    });
+    grid.querySelectorAll('.pj-copy-btn').forEach(function(btn){
+      if(btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        copyCode(btn.dataset.code, btn);
+      });
     });
     if(noResults) noResults.hidden = visibleCount !== 0;
   }

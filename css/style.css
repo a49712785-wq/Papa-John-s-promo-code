@@ -257,3 +257,12 @@ footer.site-footer{background:#241D17;color:#C9C2B6;padding:36px 0;}
 footer.site-footer .wrap{font-size:13px;line-height:1.7;}
 footer.site-footer strong{color:#fff;}
 footer.site-footer a{color:#E3AE85;}
+
+/* Static code cards: full code + copy on the card */
+.pj-code-row{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.pj-code-row .pj-code-text{font-size:18px;}
+.pj-code-row .pj-copy-inline{padding:8px 18px;}
+.pj-details-btn{background:none;border:0;color:#1a73e8;font-size:13px;cursor:pointer;padding:0;margin-top:10px;text-decoration:underline;font-family:inherit;}
+.pj-terms{margin-top:12px;font-size:13.5px;}
+.pj-terms summary{cursor:pointer;color:#5b6570;}
+.pj-terms p{margin:8px 0 0;color:#3d454d;}
