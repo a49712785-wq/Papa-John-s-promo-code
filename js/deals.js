@@ -5,45 +5,93 @@
   var grid = document.getElementById('pjGrid');
   if(!grid) return;
 
-  var LAST_CHECKED = 'July 26, 2026';
+  var LAST_CHECKED = 'October 17, 2026';
 
   var DEALS = [
-    { type:'code', code:'SM25', filter:'percent-off', verify:'official', discount:'25% off', tag:'Public code',
+    { type:'code', code:'SM25', filter:'percent-off', verify:'confirmed', discount:'25% off', tag:'Public code',
       title:'25% off full-priced online orders',
-      desc:'One of the most active codes right now, for full-priced items on online and app orders. Best for carryout and delivery.',
+      desc:'Listed as working today across multiple major coupon databases, with a recent community success on Sep 24, 2026.',
       restrict:'Applies to full-priced menu items only. Confirm the discount shows in your cart total before paying.' },
     { type:'code', code:'TAKE25DEAL', filter:'percent-off', verify:'confirmed', discount:'25% off', tag:'Public code',
       title:'25% off carryout orders',
-      desc:'Confirmed working by multiple recent sources for carryout orders specifically.',
-      restrict:'Carryout only. Confirm your total before paying, since exact value can vary by source.' },
-    { type:'offer', filter:'rewards', verify:'official', discount:'Up to 30% off', tag:'Member exclusive',
+      desc:'Listed as working this week across multiple coupon databases, with a community success on Oct 7, 2026.',
+      restrict:'Carryout only. Listed as ending Oct 18, 2026 per coupon databases (unverified). Confirm your total before paying.' },
+    { type:'code', code:'20OFFSA', filter:'percent-off', verify:'confirmed', discount:'20% off', tag:'Public code',
+      title:'20% off online orders',
+      desc:'Listed as active this week on multiple coupon databases, validated Oct 17, 2026 on one of them.',
+      restrict:'Some databases list a $100+ minimum, others list it sitewide. Confirm your cart total before paying.' },
+    { type:'code', code:'20OFFEB', filter:'percent-off', verify:'confirmed', discount:'20% off', tag:'Public code',
+      title:'20% off select items $35+',
+      desc:'Listed as verified in the last 24 hours on a major coupon database, with a community success on Oct 6, 2026.',
+      restrict:'Select items with a $35+ order. Confirm the discount in your cart before paying.' },
+    { type:'code', code:'AMAC20', filter:'percent-off', verify:'confirmed', discount:'20% off', tag:'Public code',
+      title:'20% off (AMAC member code)',
+      desc:'Listed as verified in the last 24 hours, with a community success on Oct 12, 2026. Also published as an AMAC member benefit.',
+      restrict:'Confirm the discount in your cart before paying. Eligibility may vary.' },
+    { type:'code', code:'PEPSI20', filter:'percent-off', verify:'confirmed', discount:'20% off', tag:'Public code',
+      title:'20% off (Pepsi promo)',
+      desc:'Listed as verified 11 hours ago on a major coupon database, with two community successes on Sep 24, 2026.',
+      restrict:'Listed as ending Oct 23, 2026 per coupon databases (unverified). Confirm your total before paying.' },
+    { type:'code', code:'PJU20OFF', filter:'percent-off', verify:'confirmed', discount:'20% off', tag:'Public code',
+      title:'20% off pizza orders',
+      desc:'Listed as current this week on two coupon databases.',
+      restrict:'Confirm the discount in your cart before paying.' },
+    { type:'code', code:'THANKS30', filter:'percent-off', verify:'checkout', discount:'Up to 30% off', tag:'Public code',
+      title:'Up to 30% off',
+      desc:'Circulating on a coupon database this month as a verified code. Single source so far.',
+      restrict:'Confirm at checkout. Exact value may vary.' },
+    { type:'code', code:'ISU40', filter:'percent-off', verify:'checkout', discount:'40% off', tag:'Public code',
+      title:'40% off (exclusive coupon)',
+      desc:'Circulating on a coupon database this month. Single source so far.',
+      restrict:'Confirm at checkout. May be limited to select locations or accounts.' },
+    { type:'code', code:'CURVE50', filter:'percent-off', verify:'checkout', discount:'50% off', tag:'Public code',
+      title:'50% off regular-priced pizza',
+      desc:'Circulating on a coupon database this month, listed as expiring soon. Single source so far.',
+      restrict:'Regular-priced pizza only. Confirm at checkout before counting on it.' },
+    { type:'code', code:'FREEDELIVERY', filter:'percent-off', verify:'checkout', discount:'10% off + free delivery', tag:'Public code',
+      title:'10% off plus free delivery',
+      desc:'Circulating on a coupon database this month. Single source so far.',
+      restrict:'Confirm at checkout. Delivery terms may vary by store.' },
+    { type:'code', code:'12for12', filter:'bundles-other', verify:'checkout', discount:'$12', tag:'Public code',
+      title:'Medium 5-topping or specialty pizza for $12',
+      desc:'Circulating on a coupon database this month. Single source so far.',
+      restrict:'Confirm at checkout. May be limited to participating stores.' },
+    { type:'offer', filter:'rewards', verify:'official', discount:'Up to 30% off', tag:'Member exclusive', checked:'July 26, 2026',
       title:'Email/text signup',
       desc:'New customers can unlock up to 30% off their first order by signing up for email or text alerts.',
       restrict:'Available to new customers only, tied to a first online order.' },
-    { type:'offer', filter:'rewards', verify:'official', discount:'$9.99', tag:'Rewards exclusive',
+    { type:'offer', filter:'rewards', verify:'official', discount:'$9.99', tag:'Rewards exclusive', checked:'July 26, 2026',
       title:'Papa Rewards $9.99 pizza deal',
       desc:'Select pizzas at $9.99, available to Papa Rewards members through their account.',
       restrict:'Requires an active Papa Rewards account. Selection may vary by store.' },
-    { type:'offer', filter:'student-military', verify:'checkout', discount:'~25% off', tag:'ID required',
+    { type:'offer', filter:'student-military', verify:'checkout', discount:'~25% off', tag:'ID required', checked:'July 26, 2026',
       title:'Teacher/Military/Student ID discount',
       desc:'Around 25% off for ID-verified customers at participating locations.',
       restrict:'Requires a valid ID at checkout. Restricted to participating locations; exclusions may apply.' },
-    { type:'offer', filter:'rewards', verify:'official', discount:'Free item', tag:'Rewards exclusive',
+    { type:'offer', filter:'rewards', verify:'official', discount:'Free item', tag:'Rewards exclusive', checked:'July 26, 2026',
       title:'Birthday reward',
       desc:'Papa Rewards members may get a complimentary item during their birthday month.',
       restrict:'Requires an active Papa Rewards account with birthday info on file.' },
-    { type:'offer', filter:'bundles-other', verify:'official', discount:'Bonus code', tag:'Gift card buyers',
+    { type:'offer', filter:'bundles-other', verify:'official', discount:'Bonus code', tag:'Gift card buyers', checked:'July 26, 2026',
       title:'Gift card bulk bonus',
       desc:'Buying gift cards in bulk sometimes comes with a bonus code toward a future order.',
       restrict:'Availability depends on current gift card promotions.' },
-    { type:'offer', filter:'bundles-other', verify:'official', discount:'Set price', tag:'Bundle deal',
+    { type:'offer', filter:'bundles-other', verify:'official', discount:'Set price', tag:'Bundle deal', checked:'July 26, 2026',
       title:'Papa Pairings bundle',
       desc:'Pairing two or more eligible items at a set bundle price, best for smaller orders.',
       restrict:'Bundle contents and pricing may vary by store.' },
-    { type:'offer', filter:'bundles-other', verify:'confirmed', discount:'Small % back', tag:'Cashback app users',
+    { type:'offer', filter:'bundles-other', verify:'confirmed', discount:'Small % back', tag:'Cashback app users', checked:'July 26, 2026',
       title:'Cashback app offers',
       desc:'Some cashback and rebate apps periodically list Papa John\u2019s for a small percentage back on top of any code you apply.',
-      restrict:'Availability depends on your specific cashback app. Confirm terms there before ordering.' }
+      restrict:'Availability depends on your specific cashback app. Confirm terms there before ordering.' },
+    { type:'offer', filter:'percent-off', verify:'checkout', discount:'30% off', tag:'Daytime deal',
+      title:'LUNCH30: 30% off before 2pm daily',
+      desc:'Published Oct 3, 2026 on a deals blog: 30% off regular menu price on orders before 2pm, weekends included.',
+      restrict:'Listed as valid until Dec 31, 2026 per the source (unverified). Confirm at checkout.' },
+    { type:'offer', filter:'bundles-other', verify:'checkout', discount:'$13.99', tag:'No code needed',
+      title:'The Works large pizza $13.99',
+      desc:'Published Sep 25, 2026 on a deals blog: large 7-topping Works pizza $13.99 (was $20.99), no code needed.',
+      restrict:'Listed as running before Nov 8, 2026 per the source (unverified). Confirm the price at your store.' }
   ];
 
   var VERIFY_META = {
@@ -101,7 +149,7 @@
         '</div>' +
         '<div class="pj-verify-row">' +
           '<span class="pj-verify-badge ' + vm.cls + '">' + (isExpired ? warnIcon : checkIcon) + ' ' + vm.label + '</span>' +
-          '<span class="pj-last-checked">' + clockIcon + ' ' + LAST_CHECKED + '</span>' +
+          '<span class="pj-last-checked">' + clockIcon + ' ' + (d.checked || LAST_CHECKED) + '</span>' +
         '</div>' +
         '<div class="pj-card-footer">' +
           (d.type === 'code'
@@ -124,7 +172,7 @@
     modal.innerHTML =
       '<button type="button" class="pj-modal-close" id="pjCloseBtn" aria-label="Close">&times;</button>' +
       '<span class="pj-tag ' + (d.type === 'code' ? 'code' : 'member') + '" style="margin-bottom:10px; display:inline-flex;">' + d.tag + '</span>' +
-      '<div class="pj-modal-verify"><span class="pj-verify-badge ' + vm.cls + '">' + (isExpired ? warnIcon : checkIcon) + ' ' + vm.label + '</span><span>' + clockIcon + ' Last checked ' + LAST_CHECKED + '</span></div>' +
+      '<div class="pj-modal-verify"><span class="pj-verify-badge ' + vm.cls + '">' + (isExpired ? warnIcon : checkIcon) + ' ' + vm.label + '</span><span>' + clockIcon + ' Last checked ' + (d.checked || LAST_CHECKED) + '</span></div>' +
       '<p class="pj-modal-headline"><strong>' + d.discount + '</strong> &mdash; ' + d.title + '</p>' +
       '<p class="pj-modal-desc">' + d.desc + '</p>' +
       (isExpired
